@@ -1,21 +1,5 @@
 import React, { useState } from 'react';
 import { 
-  Building2, 
-  FilePlus2, 
-  Search, 
-  FolderKanban, 
-  BarChart3, 
-  Info, 
-  Menu, 
-  X,
-  BrainCircuit,
-  GitMerge,
-  ShieldCheck,
-  ChevronRight
-} from 'lucide-react';
-
-import React, { useState } from 'react';
-import { 
   Menu, 
   X,
   ShieldCheck,
@@ -50,18 +34,11 @@ export default function Navbar({ activePage, setActivePage }) {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gov-border shadow-sm text-gov-text-primary">
-      {/* Top Govt / SIH Banner (Level 1) */}
+      {/* Top Govt Banner (Level 1) */}
       <div className="bg-gov-primary-dark py-2 px-4 text-xs">
         <div className="max-w-7xl mx-auto flex items-center justify-between font-medium text-slate-200">
           <div className="flex items-center space-x-2">
-            <span className="font-bold text-white tracking-wider">SIH26043</span>
-            <span className="text-slate-400">|</span>
             <span className="font-medium text-slate-350">Societal Innovation Collaboration Platform</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <span className="font-bold text-emerald-400 text-xs tracking-wider">
-              THE OUTLIERS
-            </span>
           </div>
         </div>
       </div>
@@ -84,14 +61,11 @@ export default function Navbar({ activePage, setActivePage }) {
             <div>
               <div className="flex items-center space-x-1.5">
                 <span className="font-extrabold text-lg tracking-tight text-gov-primary-dark">
-                  SIH26043
-                </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-gov-primary-dark text-white font-bold">
-                  THE OUTLIERS
+                  Societal Innovation
                 </span>
               </div>
               <p className="text-[10px] text-gov-text-secondary font-medium hidden sm:block">
-                Societal Innovation Collaboration Platform
+                Collaboration Platform
               </p>
             </div>
           </div>

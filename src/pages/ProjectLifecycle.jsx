@@ -8,10 +8,8 @@ import {
   Users, 
   Building2, 
   GraduationCap, 
-  BookOpen, 
   Plus, 
   Download, 
-  Calendar,
   Sparkles,
   ChevronRight,
   Info
@@ -72,12 +70,12 @@ export default function ProjectLifecycle({ problemData, setActivePage }) {
   ];
 
   return (
-    <div className="bg-slate-50 min-h-screen py-10">
+    <div className="bg-gov-bg min-h-screen py-10 text-gov-text-primary">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Prototype Disclaimer Banner */}
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3.5 flex items-start space-x-3 text-amber-900 text-xs sm:text-sm">
-          <Info className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+        <div className="bg-white border border-gov-warning rounded-lg p-3.5 flex items-start space-x-3 text-gov-text-primary text-xs sm:text-sm shadow-sm">
+          <Info className="w-5 h-5 text-gov-warning shrink-0 mt-0.5" />
           <div>
             <strong className="font-bold">Prototype Demonstration:</strong> This lifecycle page represents the active stages of collaborative community projects. No live universities or industry partners are contacted.
           </div>
@@ -86,21 +84,21 @@ export default function ProjectLifecycle({ problemData, setActivePage }) {
         {/* Title and Top Navigation CTA */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold mb-2 border border-blue-200">
-              <Layers className="w-3.5 h-3.5 text-blue-600" />
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-slate-100 text-gov-primary text-xs font-bold mb-2 border border-gov-border">
+              <Layers className="w-3.5 h-3.5 text-gov-primary" />
               <span>Project Execution Suite</span>
             </div>
-            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-extrabold text-gov-text-primary tracking-tight">
               Problem-to-Impact Project
             </h1>
-            <p className="text-slate-600 text-sm mt-0.5">
+            <p className="text-gov-text-secondary text-sm mt-0.5">
               Follow the active progress of community challenges as they transition into validated engineering solutions.
             </p>
           </div>
 
           <button
             onClick={() => setActivePage('dashboard')}
-            className="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm rounded-xl shadow-lg flex items-center space-x-2 transition-colors cursor-pointer shrink-0"
+            className="px-5 py-2.5 bg-gov-primary hover:bg-gov-primary-dark text-white font-bold text-sm rounded-lg shadow-sm border border-gov-primary transition-colors cursor-pointer flex items-center space-x-2 shrink-0"
           >
             <span>View Impact Dashboard</span>
             <ArrowRight className="w-4 h-4" />
@@ -108,9 +106,9 @@ export default function ProjectLifecycle({ problemData, setActivePage }) {
         </div>
 
         {/* Horizontal Project Lifecycle Timeline */}
-        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
-          <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-blue-600" />
+        <div className="bg-white rounded-lg p-6 sm:p-8 border border-gov-border shadow-sm space-y-6">
+          <h2 className="text-base font-extrabold text-gov-text-primary flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-gov-primary" />
             <span>Horizontal Lifecycle Progress</span>
           </h2>
 
@@ -124,26 +122,26 @@ export default function ProjectLifecycle({ problemData, setActivePage }) {
                   <React.Fragment key={stage.key}>
                     {/* Stage Card */}
                     <div className="flex flex-col items-center flex-1">
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs shadow transition-all ${
+                      <div className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-xs shadow-sm transition-all ${
                         isActive
-                          ? 'bg-blue-600 text-white ring-4 ring-blue-100 scale-110'
+                          ? 'bg-gov-primary text-white scale-105 border-2 border-gov-primary-dark'
                           : isCompleted
-                          ? 'bg-emerald-500 text-white'
-                          : 'bg-slate-100 text-slate-400 border border-slate-200'
+                          ? 'bg-gov-success text-white'
+                          : 'bg-slate-50 text-gov-text-secondary border border-gov-border'
                       }`}>
                         {isCompleted ? '✓' : idx + 1}
                       </div>
                       <span className={`text-[11px] font-extrabold mt-2.5 text-center leading-tight ${
                         isActive 
-                          ? 'text-blue-600 font-black' 
+                          ? 'text-gov-primary font-black' 
                           : isCompleted 
-                          ? 'text-slate-800 font-bold' 
-                          : 'text-slate-400'
+                          ? 'text-gov-text-primary font-bold' 
+                          : 'text-gov-text-secondary font-medium'
                       }`}>
                         {stage.name}
                       </span>
                       {isActive && (
-                        <span className="mt-1 px-1.5 py-0.5 bg-blue-100 text-blue-700 text-[9px] font-black rounded uppercase">
+                        <span className="mt-1 px-1.5 py-0.5 bg-gov-primary text-white text-[9px] font-bold rounded uppercase">
                           Current
                         </span>
                       )}
@@ -151,7 +149,7 @@ export default function ProjectLifecycle({ problemData, setActivePage }) {
 
                     {/* Stepper Arrow */}
                     {idx < lifecycleStages.length - 1 && (
-                      <div className="flex items-center px-1 text-slate-300">
+                      <div className="flex items-center px-1 text-gov-border">
                         <ChevronRight className="w-4 h-4" />
                       </div>
                     )}
@@ -166,82 +164,82 @@ export default function ProjectLifecycle({ problemData, setActivePage }) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Progress Indicator Card */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-6">
+          <div className="bg-white rounded-lg p-6 border border-gov-border shadow-sm flex flex-col justify-between space-y-6">
             <div className="space-y-1.5">
-              <span className="text-xs font-extrabold text-slate-500 uppercase tracking-wider block">
+              <span className="text-xs font-bold text-gov-text-secondary uppercase tracking-wider block">
                 Overall Progress
               </span>
               <div className="flex items-baseline space-x-2">
-                <span className="text-4xl font-black text-slate-900">{projectInfo.progress}%</span>
-                <span className="text-xs text-emerald-600 font-bold">Ahead of schedule</span>
+                <span className="text-3xl font-black text-gov-text-primary">{projectInfo.progress}%</span>
+                <span className="text-xs text-gov-success font-bold">Ahead of schedule</span>
               </div>
             </div>
 
-            {/* Circular Progress (or beautiful linear) */}
+            {/* Linear Progress */}
             <div className="space-y-2">
-              <div className="w-full bg-slate-100 rounded-full h-4 overflow-hidden border border-slate-200">
+              <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-gov-border">
                 <div 
-                  className="bg-gradient-to-r from-blue-600 via-indigo-500 to-emerald-500 h-4 rounded-full"
+                  className="bg-gov-primary h-3 rounded-full"
                   style={{ width: `${projectInfo.progress}%` }}
                 ></div>
               </div>
-              <div className="flex justify-between text-xs text-slate-500 font-semibold">
+              <div className="flex justify-between text-xs text-gov-text-secondary font-semibold">
                 <span>Phase 4: Design & Build</span>
                 <span>Goal: Field Pilot</span>
               </div>
             </div>
 
-            <div className="bg-slate-50 rounded-xl p-4 border border-slate-150 text-xs text-slate-600 leading-relaxed">
+            <div className="bg-gov-bg rounded-lg p-4 border border-gov-border text-xs text-gov-text-secondary leading-relaxed">
               <strong>Next Milestone Alert:</strong> Hardware prototype verification is scheduled for final lab checks before launching the <strong>Field Pilot</strong> stage.
             </div>
           </div>
 
           {/* Project Details Grid */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm lg:col-span-2 space-y-6">
-            <h3 className="text-base font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-3">
+          <div className="bg-white rounded-lg p-6 border border-gov-border shadow-sm lg:col-span-2 space-y-6">
+            <h3 className="text-sm font-extrabold text-gov-text-primary uppercase tracking-wider border-b border-gov-border pb-3">
               Project Information
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               
               <div className="flex items-start space-x-3.5">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
+                <div className="w-10 h-10 rounded-lg bg-gov-primary/10 text-gov-primary flex items-center justify-center shrink-0 border border-gov-primary/25">
                   <Layers className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Project Name</span>
-                  <span className="text-sm font-extrabold text-slate-900 leading-snug">{projectInfo.title}</span>
+                  <span className="text-[10px] font-bold text-gov-text-secondary uppercase tracking-wider block">Project Name</span>
+                  <span className="text-sm font-extrabold text-gov-text-primary leading-snug">{projectInfo.title}</span>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3.5">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
+                <div className="w-10 h-10 rounded-lg bg-gov-primary/10 text-gov-primary flex items-center justify-center shrink-0 border border-gov-primary/25">
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">University</span>
-                  <span className="text-sm font-extrabold text-slate-900 leading-snug">{projectInfo.university}</span>
+                  <span className="text-[10px] font-bold text-gov-text-secondary uppercase tracking-wider block">University</span>
+                  <span className="text-sm font-extrabold text-gov-text-primary leading-snug">{projectInfo.university}</span>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3.5">
-                <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center shrink-0 border border-teal-100">
+                <div className="w-10 h-10 rounded-lg bg-gov-primary/10 text-gov-primary flex items-center justify-center shrink-0 border border-gov-primary/25">
                   <Building2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Industry Partner</span>
-                  <span className="text-sm font-extrabold text-slate-900 leading-snug">{projectInfo.industryPartner}</span>
+                  <span className="text-[10px] font-bold text-gov-text-secondary uppercase tracking-wider block">Industry Partner</span>
+                  <span className="text-sm font-extrabold text-gov-text-primary leading-snug">{projectInfo.industryPartner}</span>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3.5">
-                <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 border border-indigo-100">
+                <div className="w-10 h-10 rounded-lg bg-gov-primary/10 text-gov-primary flex items-center justify-center shrink-0 border border-gov-primary/25">
                   <Users className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Faculty Mentor & Team</span>
-                  <span className="text-sm font-extrabold text-slate-900 leading-snug">{projectInfo.facultyMentor}</span>
-                  <span className="text-xs text-slate-500 font-medium block">Team Size: {projectInfo.teamSize}</span>
+                  <span className="text-[10px] font-bold text-gov-text-secondary uppercase tracking-wider block">Faculty Mentor & Team</span>
+                  <span className="text-sm font-extrabold text-gov-text-primary leading-snug">{projectInfo.facultyMentor}</span>
+                  <span className="text-xs text-gov-text-secondary font-medium block">Team Size: {projectInfo.teamSize}</span>
                 </div>
               </div>
 
@@ -254,10 +252,10 @@ export default function ProjectLifecycle({ problemData, setActivePage }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* Milestones Card */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-base font-extrabold text-slate-900 border-b border-slate-100 pb-3 flex items-center justify-between">
+          <div className="bg-white rounded-lg p-6 border border-gov-border shadow-sm space-y-4">
+            <h3 className="text-sm font-extrabold text-gov-text-primary border-b border-gov-border pb-3 flex items-center justify-between">
               <span>Milestones Checklist</span>
-              <span className="text-xs font-semibold px-2.5 py-0.5 rounded bg-blue-100 text-blue-700 border border-blue-200">
+              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-gov-primary border border-gov-border">
                 5 / 7 Done
               </span>
             </h3>
@@ -270,16 +268,16 @@ export default function ProjectLifecycle({ problemData, setActivePage }) {
                 return (
                   <div key={i} className="flex items-start space-x-3">
                     {isDone ? (
-                      <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-5 h-5 text-gov-success shrink-0 mt-0.5" />
                     ) : isActive ? (
-                      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-100 border border-blue-500 shrink-0 mt-0.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse"></span>
+                      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-slate-100 border border-gov-primary shrink-0 mt-0.5">
+                        <span className="w-2.5 h-2.5 rounded-full bg-gov-primary"></span>
                       </span>
                     ) : (
-                      <Circle className="w-5 h-5 text-slate-300 shrink-0 mt-0.5" />
+                      <Circle className="w-5 h-5 text-gov-border shrink-0 mt-0.5" />
                     )}
-                    <span className={`text-sm font-medium ${
-                      isDone ? 'text-slate-500 line-through' : isActive ? 'text-slate-950 font-bold' : 'text-slate-400'
+                    <span className={`text-xs sm:text-sm font-medium ${
+                      isDone ? 'text-gov-text-secondary line-through' : isActive ? 'text-gov-text-primary font-bold' : 'text-gov-text-secondary'
                     }`}>
                       {m.text}
                     </span>
@@ -290,27 +288,27 @@ export default function ProjectLifecycle({ problemData, setActivePage }) {
           </div>
 
           {/* Documents Card */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-base font-extrabold text-slate-900 border-b border-slate-100 pb-3 flex items-center justify-between">
+          <div className="bg-white rounded-lg p-6 border border-gov-border shadow-sm space-y-4">
+            <h3 className="text-sm font-extrabold text-gov-text-primary border-b border-gov-border pb-3 flex items-center justify-between">
               <span>Project Documents</span>
-              <button className="text-xs text-blue-600 font-bold hover:underline flex items-center gap-1">
+              <button className="text-xs text-gov-primary font-bold hover:underline flex items-center gap-1 cursor-pointer">
                 <Plus className="w-3.5 h-3.5" /> Upload File
               </button>
             </h3>
 
             <div className="space-y-3.5">
               {documents.map((doc, idx) => (
-                <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-150 hover:bg-slate-100 transition-colors">
+                <div key={idx} className="flex items-center justify-between p-3 rounded-lg bg-gov-bg border border-gov-border hover:bg-slate-100/50 transition-colors">
                   <div className="flex items-center space-x-3 truncate">
-                    <FileText className="w-5 h-5 text-blue-600 shrink-0" />
+                    <FileText className="w-5 h-5 text-gov-primary shrink-0" />
                     <div className="truncate">
-                      <span className="text-xs font-bold text-slate-950 block truncate">{doc.name}</span>
-                      <span className="text-[10px] text-slate-500 font-medium">
+                      <span className="text-xs font-bold text-gov-text-primary block truncate">{doc.name}</span>
+                      <span className="text-[10px] text-gov-text-secondary font-medium">
                         {doc.size} • {doc.date}
                       </span>
                     </div>
                   </div>
-                  <button className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-600 transition-colors shrink-0">
+                  <button className="p-1.5 rounded hover:bg-slate-200 text-gov-text-secondary transition-colors shrink-0 cursor-pointer">
                     <Download className="w-4 h-4" />
                   </button>
                 </div>
@@ -319,27 +317,27 @@ export default function ProjectLifecycle({ problemData, setActivePage }) {
           </div>
 
           {/* Team Card */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-base font-extrabold text-slate-900 border-b border-slate-100 pb-3 flex items-center justify-between">
+          <div className="bg-white rounded-lg p-6 border border-gov-border shadow-sm space-y-4">
+            <h3 className="text-sm font-extrabold text-gov-text-primary border-b border-gov-border pb-3 flex items-center justify-between">
               <span>Project Team Roster</span>
-              <span className="text-xs text-slate-500 font-semibold">5 Members</span>
+              <span className="text-xs text-gov-text-secondary font-semibold">5 Members</span>
             </h3>
 
             <div className="space-y-3">
               {teamMembers.map((member, idx) => (
-                <div key={idx} className="flex items-center justify-between p-2.5 rounded-xl border border-slate-100">
+                <div key={idx} className="flex items-center justify-between p-2.5 rounded-lg border border-gov-border bg-gov-bg">
                   <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-slate-200 to-slate-350 text-slate-700 font-bold text-xs flex items-center justify-center shadow-inner">
+                    <div className="w-8 h-8 rounded-full bg-slate-200 text-gov-text-primary font-bold text-xs flex items-center justify-center">
                       {member.name.split(' ').map(n=>n[0]).join('')}
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-slate-950 block">{member.name}</span>
-                      <span className="text-[10px] text-slate-500 font-medium">
+                      <span className="text-xs font-bold text-gov-text-primary block">{member.name}</span>
+                      <span className="text-[10px] text-gov-text-secondary font-medium">
                         {member.dept || member.year}
                       </span>
                     </div>
                   </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200">
+                  <span className="text-[10px] font-bold px-2 py-0.5 bg-white text-gov-text-primary rounded border border-gov-border">
                     {member.role}
                   </span>
                 </div>
@@ -348,23 +346,23 @@ export default function ProjectLifecycle({ problemData, setActivePage }) {
           </div>
 
           {/* Partners Card */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-base font-extrabold text-slate-900 border-b border-slate-100 pb-3 flex items-center justify-between">
+          <div className="bg-white rounded-lg p-6 border border-gov-border shadow-sm space-y-4">
+            <h3 className="text-sm font-extrabold text-gov-text-primary border-b border-gov-border pb-3 flex items-center justify-between">
               <span>Ecosystem Partners</span>
-              <span className="text-xs text-slate-500 font-semibold">3 Active</span>
+              <span className="text-xs text-gov-text-secondary font-semibold">3 Active</span>
             </h3>
 
             <div className="space-y-3">
               {partnersList.map((partner, idx) => (
-                <div key={idx} className="flex flex-col p-3 rounded-xl bg-slate-50 border border-slate-150 space-y-1.5">
+                <div key={idx} className="flex flex-col p-3 rounded-lg bg-gov-bg border border-gov-border space-y-1.5">
                   <div className="flex justify-between items-start">
-                    <span className="text-xs font-bold text-slate-950 block leading-tight">{partner.name}</span>
-                    <span className="text-[9px] font-bold px-1.5 py-0.5 bg-teal-100 text-teal-800 rounded border border-teal-200 uppercase">
+                    <span className="text-xs font-bold text-gov-text-primary block leading-tight">{partner.name}</span>
+                    <span className="text-[9px] font-bold px-1.5 py-0.5 bg-slate-100 text-gov-text-primary rounded border border-gov-border uppercase">
                       {partner.type}
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-600 font-medium">
-                    Support: <strong className="text-slate-800">{partner.support}</strong>
+                  <p className="text-[11px] text-gov-text-secondary font-medium">
+                    Support: <strong className="text-gov-text-primary">{partner.support}</strong>
                   </p>
                 </div>
               ))}

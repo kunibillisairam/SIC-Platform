@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Filter, MapPin, Tag, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Search, Filter, ArrowRight } from 'lucide-react';
 
 export default function ExploreProblems({ setActivePage }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -45,38 +45,38 @@ export default function ExploreProblems({ setActivePage }) {
   });
 
   return (
-    <div className="bg-slate-50 min-h-screen py-12">
+    <div className="bg-gov-bg min-h-screen py-12 text-gov-text-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Header */}
-        <div>
-          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+        <div className="space-y-1">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-gov-text-primary tracking-tight">
             Explore Ground Problems & Active Projects
           </h1>
-          <p className="text-slate-600 text-sm mt-1">
+          <p className="text-gov-text-secondary text-sm">
             Browse verified community challenges submitted by citizens across India, matched with university innovation teams.
           </p>
         </div>
 
         {/* Search & Filter Bar */}
-        <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="bg-white rounded-lg p-4 border border-gov-border shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="relative w-full sm:w-96">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-gov-text-secondary absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by problem title, keyword, or district..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm outline-none focus:border-blue-500"
+              className="w-full pl-10 pr-4 py-2 rounded-lg border border-gov-border text-sm outline-none bg-white text-gov-text-primary focus:border-gov-primary"
             />
           </div>
 
           <div className="flex items-center space-x-2 w-full sm:w-auto">
-            <Filter className="w-4 h-4 text-slate-500" />
+            <Filter className="w-4 h-4 text-gov-text-secondary" />
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold bg-white text-slate-800 outline-none w-full sm:w-auto"
+              className="px-4 py-2 rounded-lg border border-gov-border text-sm font-semibold bg-white text-gov-text-primary outline-none w-full sm:w-auto"
             >
               <option value="All">All Categories</option>
               <option value="Water & Sanitation">Water & Sanitation</option>
@@ -89,30 +89,33 @@ export default function ExploreProblems({ setActivePage }) {
         {/* Problem Cards List */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {filteredProblems.map((prob) => (
-            <div key={prob.id} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
+            <div key={prob.id} className="bg-white rounded-lg p-6 border border-gov-border shadow-sm space-y-4 hover:shadow-md transition-shadow flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded bg-blue-100 text-blue-800">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-gov-primary border border-gov-border">
                     {prob.id}
                   </span>
-                  <span className="text-xs font-bold text-slate-500">{prob.category}</span>
+                  <span className="text-xs font-bold text-gov-text-secondary">{prob.category}</span>
                 </div>
-                <h3 className="font-extrabold text-slate-900 text-base leading-snug">{prob.title}</h3>
-                <p className="text-xs text-slate-600 mt-2 line-clamp-3">{prob.desc}</p>
+                <h3 className="font-extrabold text-gov-text-primary text-base leading-snug">{prob.title}</h3>
+                <p className="text-xs text-gov-text-secondary mt-2 line-clamp-3 leading-relaxed">{prob.desc}</p>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 space-y-2 text-xs">
-                <div className="flex items-center justify-between text-slate-500">
+              <div className="pt-4 border-t border-gov-border space-y-2 text-xs">
+                <div className="flex items-center justify-between text-gov-text-secondary">
                   <span>Location:</span>
-                  <strong className="text-slate-800">{prob.location}</strong>
+                  <strong className="text-gov-text-primary">{prob.location}</strong>
                 </div>
-                <div className="flex items-center justify-between text-slate-500">
+                <div className="flex items-center justify-between text-gov-text-secondary">
                   <span>Matched Team:</span>
-                  <strong className="text-blue-700">{prob.matchedTeam}</strong>
+                  <strong className="text-gov-primary">{prob.matchedTeam}</strong>
                 </div>
                 <button
-                  onClick={() => setActivePage('analysis')}
-                  className="w-full mt-2 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs rounded-lg transition-colors flex items-center justify-center space-x-1"
+                  onClick={() => {
+                    setActivePage('analysis');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="w-full mt-2 py-2 bg-transparent hover:bg-slate-50 text-gov-primary border border-gov-primary font-bold text-xs rounded-lg transition-colors flex items-center justify-center space-x-1 cursor-pointer"
                 >
                   <span>View AI Analysis</span>
                   <ArrowRight className="w-3.5 h-3.5" />

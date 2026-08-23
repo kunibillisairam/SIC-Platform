@@ -9,21 +9,18 @@ export default function Footer({ setActivePage }) {
         {/* Footer Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           
-          {/* Column 1: Platform & Team Identity */}
+          {/* Column 1: Platform Identity */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center space-x-2.5">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-sm">
+              <div className="w-8 h-8 rounded-lg bg-gov-primary flex items-center justify-center text-white shadow-sm">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <span className="font-extrabold text-base text-slate-900 tracking-tight">
-                SIH26043 | Societal Innovation
+                Societal Innovation Platform
               </span>
             </div>
             <p className="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-sm">
               An intelligent, nationwide collaboration platform connecting societal challenges with university research departments, CSR funding, and government policy groups.
-            </p>
-            <p className="text-xs text-slate-500 font-semibold">
-              Developed by: <strong className="text-slate-700 font-bold">THE OUTLIERS</strong>
             </p>
           </div>
 
