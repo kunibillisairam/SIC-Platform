@@ -1,33 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  BrainCircuit, 
   CheckCircle2, 
   ArrowRight, 
   GitMerge, 
   Loader2, 
-  Sparkles,
   Info,
   MapPin,
   Users,
-  RefreshCw,
   ArrowDown,
   FileText,
-  Check
+  Check,
+  Calendar,
+  AlertCircle
 } from 'lucide-react';
 
 export default function AnalysisResult({ problemData, setActivePage }) {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [isAnalyzing, setIsAnalyzing] = useState(true);
 
-  // Use submitted data or fallback to the prompt's exact example values
+  // Fallback values matching prompt requirements
   const data = {
+    id: problemData?.id || 'PR-2026-8942',
     title: problemData?.title || 'Seasonal drinking water shortage in a rural community',
     category: 'Water Resources',
-    priority: problemData?.urgency || 'HIGH',
+    priority: problemData?.urgency || 'High',
     severityScore: 87,
     peopleAffected: problemData?.impactScope || '4,800',
     location: problemData?.district || 'Example District, Jharkhand',
+    submissionDate: '2026-08-23',
+    status: 'Analysis Complete',
     identifiedProblem: 'Seasonal groundwater/water availability issue',
+    possibleCauses: 'Seasonal aquifer depletion, pipeline leakage, and high suspended solids in reservoir supply line.',
     possibleAreas: [
       'Water Resources',
       'Civil Engineering',
@@ -39,11 +42,11 @@ export default function AnalysisResult({ problemData, setActivePage }) {
   };
 
   const steps = [
-    'Understanding problem...',
-    'Identifying domain...',
-    'Checking similar problems...',
-    'Calculating priority...',
-    'Finding suitable expertise...'
+    'Parsing structured report text...',
+    'Matching primary engineering domains...',
+    'Querying geospatial database for overlaps...',
+    'Running severity rule-matrix index...',
+    'Structuring collaboration recommendations...'
   ];
 
   useEffect(() => {
@@ -56,11 +59,11 @@ export default function AnalysisResult({ problemData, setActivePage }) {
           return prev + 1;
         } else {
           clearInterval(interval);
-          setTimeout(() => setIsAnalyzing(false), 500);
+          setTimeout(() => setIsAnalyzing(false), 300);
           return prev;
         }
       });
-    }, 600);
+    }, 450);
 
     return () => clearInterval(interval);
   }, [problemData]);
@@ -70,64 +73,51 @@ export default function AnalysisResult({ problemData, setActivePage }) {
   };
 
   return (
-    <div className="bg-gov-bg min-h-screen py-10">
+    <div className="bg-gov-bg min-h-screen py-10 text-gov-text-primary">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         
-        {/* Prototype Disclaimer Banner */}
-        <div className="bg-white border border-gov-warning rounded-lg p-3.5 flex items-start space-x-3 text-gov-text-primary text-xs sm:text-sm shadow-sm">
-          <Info className="w-5 h-5 text-gov-warning shrink-0 mt-0.5" />
-          <div>
-            <strong className="font-bold">Prototype Demonstration:</strong> This page shows the automated AI problem understanding, severity calculation, and semantic deduplication results.
+        {/* Top Disclaimer Banner */}
+        <div className="bg-white border border-gov-border rounded-lg p-3.5 flex items-start space-x-3 text-xs sm:text-sm shadow-sm">
+          <Info className="w-5 h-5 text-gov-primary shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <p className="font-bold text-gov-primary-dark">Prototype Decision-Support Mockup</p>
+            <p className="text-gov-text-secondary text-xs">
+              Prototype analysis based on semantic similarity and rule/ML-based scoring. This is a demonstration interface representing automated sorting.
+            </p>
           </div>
         </div>
 
-        {/* Processing Animation View */}
+        {/* Processing Simulation view */}
         {isAnalyzing ? (
-          <div className="bg-white text-gov-text-primary rounded-lg p-8 sm:p-12 border border-gov-border shadow-sm space-y-8 text-center relative overflow-hidden">
-            <div className="relative z-10 space-y-3 max-w-xl mx-auto">
-              <div className="w-14 h-14 rounded-lg bg-gov-primary/10 flex items-center justify-center mx-auto text-gov-primary">
-                <BrainCircuit className="w-8 h-8" />
-              </div>
-              <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-gov-primary-dark">
-                AI Problem Analysis
+          <div className="bg-white text-gov-text-primary rounded-lg p-8 sm:p-12 border border-gov-border shadow-sm space-y-8 text-center">
+            <div className="max-w-xl mx-auto space-y-3">
+              <Loader2 className="w-8 h-8 text-gov-primary animate-spin mx-auto" />
+              <h2 className="text-lg font-bold text-gov-primary-dark">
+                Running Automated Intake Parsing
               </h2>
-              <p className="text-gov-text-secondary text-sm">
-                Processing report details, extracting core intent, and checking semantic duplicates...
+              <p className="text-gov-text-secondary text-xs">
+                Extracting entities, checking geospatial duplicate cluster logs, and indexing domain expertise...
               </p>
             </div>
 
-            {/* Progress Bar */}
-            <div className="relative z-10 max-w-md mx-auto space-y-2">
-              <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-gov-border">
-                <div 
-                  className="bg-gov-primary h-2.5 rounded-full transition-all duration-500 ease-out"
-                  style={{ width: `${((currentStepIndex + 1) / steps.length) * 100}%` }}
-                ></div>
-              </div>
-              <div className="flex justify-between text-[11px] font-semibold text-gov-text-secondary">
-                <span>Analyzing input...</span>
-                <span>{Math.round(((currentStepIndex + 1) / steps.length) * 100)}%</span>
-              </div>
-            </div>
-
-            {/* Processing Steps Checklist */}
-            <div className="relative z-10 max-w-md mx-auto space-y-3 text-left bg-gov-bg p-5 rounded-lg border border-gov-border">
+            {/* Checklist items */}
+            <div className="max-w-md mx-auto space-y-3 text-left bg-gov-bg p-5 rounded-lg border border-gov-border text-xs font-medium">
               {steps.map((stepText, idx) => {
-                const isCompleted = idx < currentStepIndex || (idx === currentStepIndex && currentStepIndex === steps.length - 1 && !isAnalyzing);
-                const isCurrent = idx === currentStepIndex && isAnalyzing;
+                const isCompleted = idx < currentStepIndex;
+                const isCurrent = idx === currentStepIndex;
 
                 return (
                   <div key={stepText} className="flex items-center space-x-3">
                     {isCompleted ? (
-                      <CheckCircle2 className="w-5 h-5 text-gov-success shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-gov-success shrink-0" />
                     ) : isCurrent ? (
-                      <Loader2 className="w-5 h-5 text-gov-primary animate-spin shrink-0" />
+                      <Loader2 className="w-4 h-4 text-gov-primary animate-spin shrink-0" />
                     ) : (
-                      <div className="w-5 h-5 rounded-full border-2 border-slate-350 shrink-0"></div>
+                      <div className="w-4 h-4 rounded-full border border-gov-border shrink-0"></div>
                     )}
-                    <span className={`text-sm font-semibold transition-colors ${
-                      isCompleted ? 'text-gov-success' : isCurrent ? 'text-gov-primary-dark font-bold' : 'text-gov-text-secondary'
-                    }`}>
+                    <span className={
+                      isCompleted ? 'text-gov-success font-bold' : isCurrent ? 'text-gov-primary-dark font-bold' : 'text-gov-text-secondary'
+                    }>
                       {stepText}
                     </span>
                   </div>
@@ -135,282 +125,171 @@ export default function AnalysisResult({ problemData, setActivePage }) {
               })}
             </div>
 
-            <div className="relative z-10 pt-2">
+            <div>
               <button
                 onClick={handleSkip}
-                className="text-xs text-gov-primary hover:underline transition-colors cursor-pointer font-bold"
+                className="text-xs text-gov-primary hover:underline font-bold cursor-pointer"
               >
-                Skip animation & view dashboard
+                Skip simulation & view report summary
               </button>
             </div>
-
           </div>
         ) : (
-          /* Main AI Analysis Result Dashboard */
-          <div className="space-y-8">
+          /* Main Decision Support Layout */
+          <div className="space-y-6">
             
-            {/* Header Title Card */}
-            <div className="bg-gov-primary-dark text-white rounded-lg p-6 sm:p-8 border border-gov-border shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-              <div className="space-y-2">
-                <div className="inline-flex items-center space-x-2 px-3 py-1 rounded bg-gov-success text-white text-xs font-bold">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>AI Problem Analysis Complete</span>
+            {/* Header / Summary Box */}
+            <div className="bg-white rounded-lg p-6 border border-gov-border shadow-sm space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gov-border pb-4">
+                <div>
+                  <span className="text-[10px] text-gov-text-secondary uppercase font-bold tracking-wider">
+                    Enterprise Decision-Support System
+                  </span>
+                  <h1 className="text-xl font-bold text-gov-primary-dark mt-0.5">
+                    Problem Analysis Report
+                  </h1>
                 </div>
-                <h1 className="text-xl sm:text-2xl font-extrabold text-white">
-                  "{data.title}"
-                </h1>
-                <p className="text-slate-300 text-xs sm:text-sm">
-                  System evaluation and semantic clustering results for judges & stakeholders.
-                </p>
+                <div className="flex items-center space-x-2">
+                  <span className="px-2.5 py-1 rounded bg-gov-primary/10 text-gov-primary border border-gov-primary/20 text-xs font-bold uppercase">
+                    ID: {data.id}
+                  </span>
+                  <span className="px-2.5 py-1 rounded bg-gov-success/10 text-gov-success border border-gov-success/20 text-xs font-bold uppercase">
+                    {data.status}
+                  </span>
+                </div>
               </div>
 
-              <div className="flex items-center space-x-3">
-                <button
-                  onClick={() => setIsAnalyzing(true)}
-                  className="px-3.5 py-2.5 bg-transparent hover:bg-white/10 text-slate-200 text-xs font-semibold rounded-lg border border-slate-500 transition-colors flex items-center space-x-1.5 cursor-pointer"
-                >
-                  <RefreshCw className="w-3.5 h-3.5" />
-                  <span>Re-analyze</span>
-                </button>
-                <button
-                  onClick={() => setActivePage('matching')}
-                  className="px-6 py-2.5 bg-gov-success hover:bg-emerald-800 text-white text-xs font-bold rounded-lg shadow-sm flex items-center space-x-2 cursor-pointer border border-gov-success"
-                >
-                  <span>Find Best Matches</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+              {/* Compact Problem Summary Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                <div>
+                  <span className="text-gov-text-secondary block font-semibold">Problem Title:</span>
+                  <span className="text-gov-text-primary font-bold">{data.title}</span>
+                </div>
+                <div>
+                  <span className="text-gov-text-secondary block font-semibold">Geographical Location:</span>
+                  <span className="text-gov-text-primary font-bold flex items-center gap-1 mt-0.5">
+                    <MapPin className="w-3.5 h-3.5 text-gov-text-secondary shrink-0" />
+                    {data.location}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-gov-text-secondary block font-semibold">Submission Date:</span>
+                  <span className="text-gov-text-primary font-bold flex items-center gap-1 mt-0.5">
+                    <Calendar className="w-3.5 h-3.5 text-gov-text-secondary shrink-0" />
+                    {data.submissionDate}
+                  </span>
+                </div>
               </div>
             </div>
 
-            {/* Key Metrics Overview Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {/* Analysis Summary Blocks */}
+            <div className="bg-white rounded-lg p-6 border border-gov-border shadow-sm space-y-4">
+              <h2 className="text-xs uppercase font-extrabold tracking-wider text-gov-text-secondary border-b border-slate-100 pb-2">
+                Analysis Summary
+              </h2>
               
-              {/* Box 1: Problem Category */}
-              <div className="bg-white rounded-lg p-4 sm:p-5 border border-gov-border shadow-sm space-y-1.5">
-                <span className="text-[10px] font-bold text-gov-text-secondary uppercase tracking-wider block">
-                  Problem Category
-                </span>
-                <span className="text-sm sm:text-base font-extrabold text-gov-text-primary block truncate">
-                  {data.category}
-                </span>
-                <span className="text-[11px] text-gov-primary font-semibold block">Primary Domain</span>
-              </div>
-
-              {/* Box 2: Priority */}
-              <div className="bg-white rounded-lg p-4 sm:p-5 border border-gov-border shadow-sm space-y-1.5">
-                <span className="text-[10px] font-bold text-gov-text-secondary uppercase tracking-wider block">
-                  Priority
-                </span>
-                <div>
-                  <span className="inline-block px-2.5 py-0.5 rounded bg-gov-danger text-white font-bold text-xs uppercase">
-                    {data.priority}
-                  </span>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div className="bg-gov-bg border border-gov-border rounded p-4">
+                  <span className="text-[10px] uppercase font-bold text-gov-text-secondary block">Category</span>
+                  <span className="text-sm font-extrabold text-gov-text-primary block mt-1">{data.category}</span>
                 </div>
-                <span className="text-[11px] text-gov-text-secondary font-medium block">Urgent Action</span>
-              </div>
+                
+                <div className="bg-gov-bg border border-gov-border rounded p-4">
+                  <span className="text-[10px] uppercase font-bold text-gov-text-secondary block">Priority</span>
+                  <span className="text-sm font-extrabold text-gov-danger block mt-1 uppercase">{data.priority}</span>
+                </div>
 
-              {/* Box 3: Severity Score */}
-              <div className="bg-white rounded-lg p-4 sm:p-5 border border-gov-border shadow-sm space-y-1.5">
-                <span className="text-[10px] font-bold text-gov-text-secondary uppercase tracking-wider block">
-                  Severity Score
-                </span>
-                <span className="text-xl sm:text-2xl font-black text-gov-warning block">
-                  {data.severityScore}/100
-                </span>
-                <span className="text-[11px] text-gov-text-secondary font-medium block">Impact Index</span>
-              </div>
+                <div className="bg-gov-bg border border-gov-border rounded p-4">
+                  <span className="text-[10px] uppercase font-bold text-gov-text-secondary block">Severity Index</span>
+                  <span className="text-sm font-extrabold text-gov-warning block mt-1">{data.severityScore}/100</span>
+                </div>
 
-              {/* Box 4: People Affected */}
-              <div className="bg-white rounded-lg p-4 sm:p-5 border border-gov-border shadow-sm space-y-1.5">
-                <span className="text-[10px] font-bold text-gov-text-secondary uppercase tracking-wider block">
-                  People Affected
-                </span>
-                <span className="text-xl sm:text-2xl font-black text-gov-primary block">
-                  {data.peopleAffected}
-                </span>
-                <span className="text-[11px] text-gov-text-secondary font-medium block">Estimated Population</span>
+                <div className="bg-gov-bg border border-gov-border rounded p-4">
+                  <span className="text-[10px] uppercase font-bold text-gov-text-secondary block">Affected Population</span>
+                  <span className="text-sm font-extrabold text-gov-primary block mt-1">{data.peopleAffected}</span>
+                </div>
               </div>
-
-              {/* Box 5: Location */}
-              <div className="bg-white rounded-lg p-4 sm:p-5 border border-gov-border shadow-sm space-y-1.5 col-span-2 sm:col-span-1">
-                <span className="text-[10px] font-bold text-gov-text-secondary uppercase tracking-wider block">
-                  Location
-                </span>
-                <span className="text-xs sm:text-sm font-extrabold text-gov-text-primary block leading-tight">
-                  {data.location}
-                </span>
-                <span className="text-[11px] text-gov-text-secondary font-medium block">Geographic Region</span>
-              </div>
-
             </div>
 
-            {/* AI Understanding Section */}
-            <div className="bg-white rounded-lg p-6 sm:p-8 border border-gov-border shadow-sm space-y-6">
-              <div className="flex items-center space-x-3 pb-4 border-b border-gov-border">
-                <div className="w-10 h-10 rounded-lg bg-gov-primary/10 text-gov-primary flex items-center justify-center">
-                  <BrainCircuit className="w-6 h-6" />
-                </div>
-                <div>
-                  <h2 className="text-lg font-extrabold text-gov-text-primary">
-                    AI Understanding
-                  </h2>
-                  <p className="text-xs text-gov-text-secondary">
-                    Extracted problem core and mapped technical resolution domains.
-                  </p>
-                </div>
-              </div>
+            {/* Problem Understanding Section */}
+            <div className="bg-white rounded-lg p-6 border border-gov-border shadow-sm space-y-4">
+              <h2 className="text-xs uppercase font-extrabold tracking-wider text-gov-text-secondary border-b border-slate-100 pb-2">
+                Problem Understanding
+              </h2>
 
-              {/* Identified Problem & Possible Areas Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                {/* Identified Problem */}
-                <div className="bg-gov-bg rounded-lg p-5 border border-gov-border space-y-2">
-                  <span className="text-xs font-bold text-gov-text-secondary uppercase tracking-wider block">
-                    Identified Problem
-                  </span>
-                  <p className="text-base font-extrabold text-gov-text-primary leading-snug">
-                    {data.identifiedProblem}
-                  </p>
-                  <p className="text-xs text-gov-text-secondary pt-1 leading-relaxed">
-                    The NLP engine processed the citizen description, identifying seasonal groundwater depletion, drinking water scarcity, and distance to water sources as the primary failure points.
-                  </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-gov-bg border border-gov-border rounded p-4 space-y-1">
+                  <span className="text-[10px] uppercase font-bold text-gov-text-secondary block">Identified Problem</span>
+                  <p className="text-xs font-semibold text-gov-text-primary leading-relaxed">{data.identifiedProblem}</p>
                 </div>
 
-                {/* Possible Areas */}
-                <div className="bg-gov-bg rounded-lg p-5 border border-gov-border space-y-3">
-                  <span className="text-xs font-bold text-gov-text-secondary uppercase tracking-wider block">
-                    Possible Areas
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {data.possibleAreas.map((area) => (
-                      <span 
-                        key={area}
-                        className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded bg-white border border-gov-primary text-gov-primary font-bold text-xs shadow-sm"
-                      >
-                        <Check className="w-3.5 h-3.5 text-gov-primary" />
-                        <span>{area}</span>
+                <div className="bg-gov-bg border border-gov-border rounded p-4 space-y-1">
+                  <span className="text-[10px] uppercase font-bold text-gov-text-secondary block">Possible Causes</span>
+                  <p className="text-xs font-semibold text-gov-text-primary leading-relaxed">{data.possibleCauses}</p>
+                </div>
+
+                <div className="bg-gov-bg border border-gov-border rounded p-4 space-y-2">
+                  <span className="text-[10px] uppercase font-bold text-gov-text-secondary block">Relevant Domains</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {data.possibleAreas.map(area => (
+                      <span key={area} className="px-2 py-0.5 rounded bg-white border border-gov-border text-[10px] text-gov-primary font-bold">
+                        {area}
                       </span>
                     ))}
                   </div>
-                  <p className="text-xs text-gov-text-secondary pt-1 leading-relaxed">
-                    Cross-referenced with academic discipline taxonomy to target universities with active R&D capabilities in these specific fields.
-                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Similar Reports Section */}
+            <div className="bg-white rounded-lg p-6 border border-gov-border shadow-sm space-y-6">
+              <div>
+                <h2 className="text-xs uppercase font-extrabold tracking-wider text-gov-text-secondary border-b border-slate-100 pb-2">
+                  Similar Reports & Deduplication
+                </h2>
+                <p className="text-xs text-gov-text-secondary mt-2">
+                  Semantic comparison shows **{data.similarReportsCount} similar reports** submitted across **{data.locationsAffectedCount} locations** in the district database.
+                </p>
+              </div>
+
+              {/* Deduplication Flow Diagram */}
+              <div className="bg-gov-bg border border-gov-border rounded-lg p-5 max-w-sm mx-auto text-center space-y-3">
+                
+                {/* Inputs block */}
+                <div className="bg-white border border-gov-border rounded p-3 font-semibold text-xs text-gov-text-primary shadow-sm">
+                  {data.similarReportsCount} Citizen Submissions
+                </div>
+
+                {/* Arrow */}
+                <div className="flex justify-center text-gov-text-secondary">
+                  <ArrowDown className="w-4 h-4" />
+                </div>
+
+                {/* Consolidated Cluster block */}
+                <div className="bg-white border-2 border-gov-success rounded p-3 font-bold text-xs text-gov-success shadow-sm">
+                  1 Consolidated Problem Cluster
                 </div>
 
               </div>
             </div>
 
-            {/* Similar Problems Detected & Deduplication Section */}
-            <div className="bg-white rounded-lg p-6 sm:p-8 border border-gov-border shadow-sm space-y-6">
-              <div className="flex items-center space-x-3 pb-4 border-b border-gov-border">
-                <div className="w-10 h-10 rounded-lg bg-gov-primary/10 text-gov-primary flex items-center justify-center">
-                  <GitMerge className="w-6 h-6" />
-                </div>
-                <div>
-                  <h2 className="text-lg font-extrabold text-gov-text-primary">
-                    Similar Problems Detected & Deduplication
-                  </h2>
-                  <p className="text-xs text-gov-text-secondary">
-                    Semantic similarity matching and geospatial report clustering.
-                  </p>
-                </div>
-              </div>
-
-              {/* Stat Counters */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-gov-bg border border-gov-border rounded-lg p-4 flex items-center justify-between">
-                  <div>
-                    <span className="text-xs font-bold text-gov-text-secondary uppercase block">Similar Reports Detected</span>
-                    <span className="text-xl font-black text-gov-text-primary">{data.similarReportsCount} reports</span>
-                  </div>
-                  <div className="w-10 h-10 rounded bg-gov-primary text-white flex items-center justify-center font-bold">
-                    <FileText className="w-5 h-5" />
-                  </div>
-                </div>
-
-                <div className="bg-gov-bg border border-gov-border rounded-lg p-4 flex items-center justify-between">
-                  <div>
-                    <span className="text-xs font-bold text-gov-text-secondary uppercase block">Locations Affected</span>
-                    <span className="text-xl font-black text-gov-text-primary">{data.locationsAffectedCount} locations</span>
-                  </div>
-                  <div className="w-10 h-10 rounded bg-gov-primary text-white flex items-center justify-center font-bold">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Visual Deduplication Flow */}
-              <div className="bg-gov-bg text-gov-text-primary border border-gov-border rounded-lg p-6 sm:p-8 space-y-6">
-                <div className="text-center space-y-1">
-                  <span className="text-xs font-extrabold text-gov-primary uppercase tracking-widest block">
-                    Visual Deduplication Flow
-                  </span>
-                  <h3 className="text-base font-extrabold text-gov-text-primary">
-                    Clustering Multiple Citizen Submissions into 1 Problem Cluster
-                  </h3>
-                </div>
-
-                {/* Flow Diagram */}
-                <div className="max-w-md mx-auto flex flex-col items-center space-y-3">
-                  
-                  {/* Step 1 Box: 7 Citizen Reports */}
-                  <div className="w-full bg-white border border-gov-border rounded-lg p-4 text-center shadow-sm">
-                    <div className="flex items-center justify-center space-x-2">
-                      <Users className="w-5 h-5 text-gov-primary" />
-                      <span className="font-extrabold text-base text-gov-text-primary">
-                        7 Citizen Reports
-                      </span>
-                    </div>
-                    <p className="text-[11px] text-gov-text-secondary mt-1">
-                      Submitted across 3 nearby panchayat villages within a 12km radius.
-                    </p>
-                  </div>
-
-                  {/* Downward Arrow */}
-                  <div className="flex items-center justify-center text-gov-primary py-1">
-                    <div className="w-8 h-8 rounded-full bg-gov-primary/10 border border-gov-primary/30 flex items-center justify-center">
-                      <ArrowDown className="w-4 h-4 text-gov-primary" />
-                    </div>
-                  </div>
-
-                  {/* Step 2 Box: 1 Problem Cluster */}
-                  <div className="w-full bg-white border-2 border-gov-success rounded-lg p-5 text-center shadow-sm">
-                    <div className="flex items-center justify-center space-x-2">
-                      <GitMerge className="w-6 h-6 text-gov-success" />
-                      <span className="font-black text-lg text-gov-success">
-                        1 Problem Cluster
-                      </span>
-                    </div>
-                    <span className="mt-1 inline-block text-[10px] font-bold px-2.5 py-0.5 rounded bg-gov-success text-white">
-                      Cluster #JHK-WATER-087
-                    </span>
-                    <p className="text-[11px] text-gov-text-secondary mt-2">
-                      Prevents redundant solver efforts and unifies R&D funding for maximum community impact.
-                    </p>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-
-            {/* Bottom Call To Action Button */}
-            <div className="bg-gov-primary-dark text-white rounded-lg p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 border border-gov-border shadow-sm">
-              <div className="space-y-1 text-center sm:text-left">
-                <h3 className="text-lg font-extrabold">
-                  Proceed to Smart Matchmaking
+            {/* Recommended Action Section */}
+            <div className="bg-white rounded-lg p-6 border border-gov-border shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="space-y-1">
+                <h3 className="text-sm font-bold text-gov-primary-dark uppercase tracking-wide">
+                  Recommended Action
                 </h3>
-                <p className="text-xs text-slate-300 max-w-xl">
-                  Connect this unified problem cluster with registered university research labs, student innovation teams, and CSR sponsors.
+                <p className="text-xs text-gov-text-secondary">
+                  Analyze available solver capacities and CSR grants aligned to the identified domains.
                 </p>
               </div>
 
               <button
                 onClick={() => setActivePage('matching')}
-                className="w-full sm:w-auto px-6 py-3 bg-gov-success hover:bg-emerald-800 text-white font-extrabold text-sm rounded-lg shadow-sm border border-gov-success flex items-center justify-center space-x-3 transition-colors cursor-pointer shrink-0"
+                className="w-full sm:w-auto px-6 py-2.5 bg-gov-primary hover:bg-gov-primary-dark text-white font-bold text-xs rounded-lg shadow-sm border border-gov-primary transition-colors cursor-pointer flex items-center justify-center space-x-1.5 shrink-0"
               >
-                <span>Find Best Matches</span>
-                <ArrowRight className="w-5 h-5" />
+                <span>Proceed to Smart Matching</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
 
