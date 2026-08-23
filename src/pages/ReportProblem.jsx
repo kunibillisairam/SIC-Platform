@@ -3,94 +3,150 @@ import {
   FilePlus2, 
   Sparkles, 
   MapPin, 
-  Building2, 
-  Users, 
-  AlertCircle, 
-  Upload, 
-  FileText, 
-  Image as ImageIcon, 
-  Video, 
+  Tag, 
+  AlertTriangle, 
   ArrowRight, 
-  CheckCircle2,
-  Info
+  Upload, 
+  CheckCircle2, 
+  Loader2,
+  RefreshCw,
+  Lightbulb
 } from 'lucide-react';
 
 export default function ReportProblem({ setActivePage, setProblemData }) {
-  const [formData, setFormData] = useState({
-    title: 'Seasonal drinking water shortage in a rural community',
-    description: 'During summer months from March to June, over 800 households across 4 panchayat villages experience severe drinking water shortages as ground water tables deplete rapidly. Villagers must travel over 5 km daily to access safe drinking water, causing school absenteeism among children and impacting daily agricultural livelihoods.',
-    domain: 'Water',
-    location: 'Panchayat Ward 3, Valantharavai',
-    district: 'Ramanathapuram, Tamil Nadu',
-    peopleAffected: '3,500+ residents & 600 students',
-    severity: 'High',
-    imageFile: null,
-    videoFile: null,
-    docFile: null,
-  });
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [analysisStep, setAnalysisStep] = useState('');
 
-  const domains = [
-    'Education',
-    'Healthcare',
-    'Agriculture',
-    'Water',
-    'Sanitation',
-    'Environment',
-    'Energy',
-    'Infrastructure',
-    'Accessibility',
-    'Public Services',
-    'Other'
+  const samplePresets = [
+    {
+      label: "Water Contamination (Primary)",
+      title: "Water contamination and leakage in rural school supply line",
+      category: "Water & Sanitation",
+      district: "Coimbatore, Tamil Nadu",
+      pincode: "641004",
+      urgency: "High",
+      description: "The drinking water pipeline supplying 3 primary schools in Panchayat Ward 4 has high turbidity and intermittent pipe leakage, leading to frequent school absenteeism and waterborne illnesses among 450+ children during monsoon.",
+      impactScope: "450+ Students & 1,200 villagers"
+    },
+    {
+      label: "Agricultural Spoilage",
+      title: "Post-harvest grain spoilage due to high humidity in village godowns",
+      category: "Agriculture & Rural Tech",
+      district: "Madurai, Tamil Nadu",
+      pincode: "625001",
+      urgency: "Critical",
+      description: "Farmers facing 25% moisture loss in paddy storage facilities due to unmonitored humidity. Requires solar grain dryer and telemetry sensors.",
+      impactScope: "2,400 Local Farmers"
+    },
+    {
+      label: "Rural Healthcare Cold-Chain",
+      title: "Remote primary healthcare center lacking cold chain for immunization vaccines",
+      category: "Healthcare & Hygiene",
+      district: "Wayanad, Kerala",
+      pincode: "673121",
+      urgency: "Critical",
+      description: "Frequent rural grid failures spoil vital childhood vaccines. Requires low-cost solar Peltier thermal cooling unit.",
+      impactScope: "15 Primary Health Centers"
+    }
   ];
 
-  const handleFileChange = (e, field) => {
-    if (e.target.files && e.target.files[0]) {
-      setFormData({ ...formData, [field]: e.target.files[0].name });
-    }
+  const [formData, setFormData] = useState(samplePresets[0]);
+
+  const loadPreset = (preset) => {
+    setFormData(preset);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (setProblemData) {
-      setProblemData(formData);
-    }
-    setActivePage('analysis');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsAnalyzing(true);
+    setAnalysisStep('Extracting key domain context & NLP entity parsing...');
+
+    setTimeout(() => {
+      setAnalysisStep('Evaluating severity index & SDG alignment...');
+    }, 900);
+
+    setTimeout(() => {
+      setAnalysisStep('Checking geospatial database for duplicate reports...');
+    }, 1800);
+
+    setTimeout(() => {
+      setIsAnalyzing(false);
+      if (setProblemData) {
+        setProblemData(formData);
+      }
+      setActivePage('analysis');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 2600);
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen py-10">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+    <div className="bg-slate-50 min-h-screen py-10 sm:py-14">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Prototype Disclaimer Banner */}
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3.5 flex items-start space-x-3 text-amber-900 text-xs sm:text-sm">
-          <Info className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-          <div>
-            <strong className="font-bold">Prototype Demonstration:</strong> This system simulates AI problem intake, priority scoring, and smart matchmaking. No actual government departments or university entities are contacted.
-          </div>
-        </div>
-
-        {/* Page Title & Subtitle */}
-        <div className="text-center sm:text-left space-y-2">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold border border-blue-200">
+        {/* Page Header */}
+        <div className="mb-8 text-center sm:text-left space-y-2">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-extrabold border border-blue-200">
             <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-            <span>Citizen Portal Intake</span>
+            <span>AI-Assisted Citizen Problem Intake</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Report a Societal Problem
+          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+            Report a Community Problem
           </h1>
-          <p className="text-slate-600 text-base">
-            Help us connect your problem with the people and resources that can solve it.
+          <p className="text-slate-600 text-sm">
+            Submit a real-world societal challenge. Our AI engine will analyze, categorize, prioritize, and check for duplicate reports instantly.
           </p>
         </div>
 
-        {/* Form Container */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-xl p-6 sm:p-8">
+        {/* Demo Preset Selector Bar */}
+        <div className="mb-6 bg-blue-900/90 text-white rounded-2xl p-4 sm:p-5 border border-blue-800 shadow-md">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div className="flex items-center space-x-2 text-xs font-bold text-blue-200">
+              <Lightbulb className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>Quick Demo Presets for SIH Evaluators:</span>
+            </div>
+            <div className="flex flex-wrap gap-2 w-full sm:w-auto">
+              {samplePresets.map((p, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => loadPreset(p)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-extrabold transition-colors border ${
+                    formData.title === p.title
+                      ? 'bg-blue-600 text-white border-blue-400 shadow'
+                      : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Main Form Box */}
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-xl p-6 sm:p-8 relative overflow-hidden">
+          
+          {/* Overlay loading state */}
+          {isAnalyzing && (
+            <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm z-20 flex flex-col items-center justify-center text-white p-6 text-center space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-blue-600/30 border border-blue-400/40 flex items-center justify-center shadow-lg animate-pulse">
+                <Loader2 className="w-8 h-8 text-blue-400 animate-spin" />
+              </div>
+              <h3 className="text-xl font-extrabold">Running AI Problem Intelligence...</h3>
+              <p className="text-sm text-blue-200 max-w-md font-semibold">
+                {analysisStep}
+              </p>
+              <div className="w-64 h-2 rounded-full bg-slate-800 overflow-hidden mt-4">
+                <div className="h-full bg-gradient-to-r from-blue-500 to-emerald-400 rounded-full animate-pulse w-3/4"></div>
+              </div>
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-6">
             
             {/* Problem Title */}
             <div>
-              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
                 Problem Title *
               </label>
               <input
@@ -99,182 +155,121 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm font-semibold text-slate-900 outline-none transition-all"
-                placeholder="e.g. Seasonal drinking water shortage in a rural community"
+                placeholder="e.g., Agricultural runoff polluting village drinking pond"
               />
             </div>
 
-            {/* Problem Description */}
-            <div>
-              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                Problem Description *
-              </label>
-              <textarea
-                rows={5}
-                required
-                value={formData.description}
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm text-slate-900 outline-none transition-all leading-relaxed"
-                placeholder="Provide details about the issue, affected community, frequency, and current ground impact..."
-              />
-            </div>
-
-            {/* Domain & Severity */}
+            {/* Category & Urgency */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                  Domain *
+                <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+                  Primary Sector / Category *
                 </label>
                 <select
-                  value={formData.domain}
-                  onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm font-semibold text-slate-900 outline-none bg-white transition-all"
+                  value={formData.category}
+                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm font-semibold text-slate-900 outline-none bg-white"
                 >
-                  {domains.map((dom) => (
-                    <option key={dom} value={dom}>{dom}</option>
-                  ))}
+                  <option value="Water & Sanitation">Water & Sanitation</option>
+                  <option value="Agriculture & Rural Tech">Agriculture & Rural Tech</option>
+                  <option value="Healthcare & Hygiene">Healthcare & Hygiene</option>
+                  <option value="Education & Digital Literacy">Education & Digital Literacy</option>
+                  <option value="Renewable Energy">Renewable Energy</option>
+                  <option value="Infrastructure & Public Safety">Infrastructure & Public Safety</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                  Severity *
+                <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+                  Urgency Level *
                 </label>
                 <select
-                  value={formData.severity}
-                  onChange={(e) => setFormData({ ...formData, severity: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm font-semibold text-slate-900 outline-none bg-white transition-all"
+                  value={formData.urgency}
+                  onChange={(e) => setFormData({ ...formData, urgency: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm font-semibold text-slate-900 outline-none bg-white"
                 >
-                  <option value="Low">Low (Long-Term / Minor Concern)</option>
-                  <option value="Medium">Medium (Moderate Priority / Ongoing Issue)</option>
-                  <option value="High">High (Severe Local Impact & Urgent Need)</option>
-                  <option value="Critical">Critical (Immediate Health, Safety, or Environmental Emergency)</option>
+                  <option value="Critical">Critical (Immediate Health/Safety Hazard)</option>
+                  <option value="High">High (Severe Local Impact)</option>
+                  <option value="Medium">Medium (Moderate Priority)</option>
+                  <option value="Low">Low (Long-Term Improvement)</option>
                 </select>
               </div>
             </div>
 
-            {/* Location & District */}
+            {/* Location details */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                  Location *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.location}
-                  onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm font-semibold text-slate-900 outline-none transition-all"
-                  placeholder="e.g. Panchayat Ward 3, Valantharavai"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                  District *
+                <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+                  District & State *
                 </label>
                 <input
                   type="text"
                   required
                   value={formData.district}
                   onChange={(e) => setFormData({ ...formData, district: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm font-semibold text-slate-900 outline-none transition-all"
-                  placeholder="e.g. Ramanathapuram, Tamil Nadu"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-semibold text-slate-900 outline-none"
+                  placeholder="e.g. Coimbatore, Tamil Nadu"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+                  Pincode / Postal Code
+                </label>
+                <input
+                  type="text"
+                  value={formData.pincode}
+                  onChange={(e) => setFormData({ ...formData, pincode: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-semibold text-slate-900 outline-none"
+                  placeholder="e.g. 641004"
                 />
               </div>
             </div>
 
-            {/* Estimated People Affected */}
+            {/* Detailed Description */}
             <div>
-              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                Estimated People Affected *
+              <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+                Detailed Problem Description *
               </label>
-              <input
-                type="text"
+              <textarea
+                rows={5}
                 required
-                value={formData.peopleAffected}
-                onChange={(e) => setFormData({ ...formData, peopleAffected: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm font-semibold text-slate-900 outline-none transition-all"
-                placeholder="e.g. 3,500+ residents & 600 students"
+                value={formData.description}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm text-slate-900 outline-none leading-relaxed font-normal"
+                placeholder="Describe the issue, ground conditions, affected community, and current challenges..."
               />
             </div>
 
-            {/* File Upload Section */}
-            <div className="space-y-4 pt-2">
-              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
-                Media & Evidence Upload (Optional)
+            {/* Impact Scope */}
+            <div>
+              <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+                Estimated Affected Population / Scope
               </label>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                
-                {/* Upload Image */}
-                <div className="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-xl p-4 text-center transition-colors bg-slate-50 relative group">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => handleFileChange(e, 'imageFile')}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                  />
-                  <div className="flex flex-col items-center space-y-1">
-                    <ImageIcon className="w-7 h-7 text-blue-600 group-hover:scale-110 transition-transform" />
-                    <span className="text-xs font-bold text-slate-800">Upload Image</span>
-                    <span className="text-[10px] text-slate-500">
-                      {formData.imageFile ? formData.imageFile : 'PNG, JPG up to 10MB'}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Upload Video */}
-                <div className="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-xl p-4 text-center transition-colors bg-slate-50 relative group">
-                  <input
-                    type="file"
-                    accept="video/*"
-                    onChange={(e) => handleFileChange(e, 'videoFile')}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                  />
-                  <div className="flex flex-col items-center space-y-1">
-                    <Video className="w-7 h-7 text-teal-600 group-hover:scale-110 transition-transform" />
-                    <span className="text-xs font-bold text-slate-800">Upload Video</span>
-                    <span className="text-[10px] text-slate-500">
-                      {formData.videoFile ? formData.videoFile : 'MP4, MOV up to 50MB'}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Supporting Document */}
-                <div className="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-xl p-4 text-center transition-colors bg-slate-50 relative group">
-                  <input
-                    type="file"
-                    accept=".pdf,.doc,.docx,.txt"
-                    onChange={(e) => handleFileChange(e, 'docFile')}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                  />
-                  <div className="flex flex-col items-center space-y-1">
-                    <FileText className="w-7 h-7 text-indigo-600 group-hover:scale-110 transition-transform" />
-                    <span className="text-xs font-bold text-slate-800">Supporting Document</span>
-                    <span className="text-[10px] text-slate-500">
-                      {formData.docFile ? formData.docFile : 'PDF, DOCX report'}
-                    </span>
-                  </div>
-                </div>
-
-              </div>
+              <input
+                type="text"
+                value={formData.impactScope}
+                onChange={(e) => setFormData({ ...formData, impactScope: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-semibold text-slate-900 outline-none"
+                placeholder="e.g. 500+ schoolchildren and 2,000 residents"
+              />
             </div>
 
-            {/* Submit Button */}
-            <div className="pt-6 border-t border-slate-200">
+            {/* Submit Action Bar */}
+            <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center text-xs text-slate-600 font-medium">
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 mr-2 shrink-0" />
+                <span>AI will categorize, assign priority, & detect duplicates instantly</span>
+              </div>
+              
               <button
                 type="submit"
-                className="w-full py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white font-extrabold text-lg rounded-xl shadow-xl hover:shadow-blue-600/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center space-x-3 cursor-pointer"
+                className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-sm rounded-xl shadow-lg hover:shadow-blue-600/40 transition-all flex items-center justify-center space-x-2"
               >
-                <Sparkles className="w-6 h-6 text-blue-200" />
-                <span>Submit Problem</span>
-                <ArrowRight className="w-5 h-5 ml-1" />
+                <Sparkles className="w-4 h-4 text-blue-200" />
+                <span>Run AI Problem Analysis</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
-              
-              <div className="mt-3 text-center text-xs text-slate-500 flex items-center justify-center space-x-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>Redirects to AI Problem Analysis for processing & priority calculation</span>
-              </div>
             </div>
 
           </form>

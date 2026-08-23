@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import StoryStepper from './components/StoryStepper';
 
 // Pages
 import Home from './pages/Home';
@@ -20,6 +21,9 @@ export default function App() {
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
       <Navbar activePage={activePage} setActivePage={setActivePage} />
       
+      {/* SIH Storyline Progress Stepper */}
+      <StoryStepper activePage={activePage} setActivePage={setActivePage} />
+
       <main className="flex-grow">
         {activePage === 'home' && <Home setActivePage={setActivePage} />}
         {activePage === 'report' && (

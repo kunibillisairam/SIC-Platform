@@ -8,9 +8,10 @@ import {
   Info, 
   Menu, 
   X,
-  Sparkles,
-  ChevronRight,
-  ShieldCheck
+  BrainCircuit,
+  GitMerge,
+  ShieldCheck,
+  ChevronRight
 } from 'lucide-react';
 
 export default function Navbar({ activePage, setActivePage }) {
@@ -19,9 +20,11 @@ export default function Navbar({ activePage, setActivePage }) {
   const navItems = [
     { id: 'home', label: 'Home', icon: Building2 },
     { id: 'report', label: 'Report Problem', icon: FilePlus2 },
-    { id: 'explore', label: 'Explore Problems', icon: Search },
+    { id: 'analysis', label: 'AI Intelligence', icon: BrainCircuit },
+    { id: 'matching', label: 'Smart Matching', icon: GitMerge },
     { id: 'projects', label: 'Projects', icon: FolderKanban },
     { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
+    { id: 'explore', label: 'Explore', icon: Search },
     { id: 'about', label: 'About', icon: Info },
   ];
 
@@ -33,16 +36,20 @@ export default function Navbar({ activePage, setActivePage }) {
 
   return (
     <header className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white shadow-xl">
-      {/* Top Banner */}
+      {/* Top Govt / SIH Banner */}
       <div className="bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 py-1.5 px-4 text-xs border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto flex items-center justify-between font-medium">
           <div className="flex items-center space-x-2 text-slate-300">
-            <span className="text-slate-200 font-medium">Societal Innovation Collaboration Platform</span>
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-600/40 text-blue-200 border border-blue-400/30">
+              SIH26043
+            </span>
+            <span className="hidden sm:inline text-slate-500">|</span>
+            <span className="text-slate-200 font-semibold">Societal Innovation Collaboration Platform</span>
           </div>
           <div className="flex items-center space-x-3 text-slate-300">
-            <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
+            <span className="flex items-center gap-1.5 text-emerald-400 font-extrabold text-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              ACTIVE PLATFORM
+              THE OUTLIERS
             </span>
           </div>
         </div>
@@ -57,23 +64,26 @@ export default function Navbar({ activePage, setActivePage }) {
             onClick={() => handleNavClick('home')}
             className="flex items-center space-x-3 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200 border border-blue-400/30">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200 border border-blue-400/30">
               <ShieldCheck className="w-6 h-6 text-blue-100" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-extrabold text-base tracking-tight text-white group-hover:text-blue-300 transition-colors">
-                  SIC Platform
+                  SIH26043
+                </span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/80 text-blue-300 font-extrabold border border-blue-700/60">
+                  THE OUTLIERS
                 </span>
               </div>
-              <p className="text-xs text-slate-400 font-medium line-clamp-1">
+              <p className="text-[11px] text-slate-400 font-medium line-clamp-1">
                 Societal Innovation Collaboration Platform
               </p>
             </div>
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden xl:flex items-center space-x-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activePage === item.id;
@@ -81,13 +91,13 @@ export default function Navbar({ activePage, setActivePage }) {
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`flex items-center space-x-2 px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
+                  className={`flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-extrabold transition-all duration-200 ${
                     isActive 
                       ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30' 
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/80'
+                      : 'text-slate-300 hover:text-white hover:bg-slate-800'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                 </button>
               );
@@ -98,7 +108,7 @@ export default function Navbar({ activePage, setActivePage }) {
           <div className="hidden sm:flex items-center space-x-3">
             <button
               onClick={() => handleNavClick('report')}
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-sm font-bold rounded-lg shadow-md hover:from-emerald-600 hover:to-teal-700 transition-all transform hover:-translate-y-0.5 border border-emerald-400/30"
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-xs font-extrabold rounded-lg shadow-md hover:from-emerald-600 hover:to-teal-700 transition-all border border-emerald-400/30"
             >
               <FilePlus2 className="w-4 h-4" />
               <span>Report Problem</span>
@@ -106,7 +116,7 @@ export default function Navbar({ activePage, setActivePage }) {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center">
+          <div className="xl:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none"
@@ -119,7 +129,7 @@ export default function Navbar({ activePage, setActivePage }) {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-1">
+        <div className="xl:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activePage === item.id;
@@ -127,14 +137,14 @@ export default function Navbar({ activePage, setActivePage }) {
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${
+                className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-xs font-bold transition-colors ${
                   isActive
                     ? 'bg-blue-600 text-white'
                     : 'text-slate-300 hover:bg-slate-800'
                 }`}
               >
                 <div className="flex items-center space-x-3">
-                  <Icon className="w-5 h-5 text-slate-400" />
+                  <Icon className="w-4 h-4 text-slate-400" />
                   <span>{item.label}</span>
                 </div>
                 <ChevronRight className="w-4 h-4 opacity-70" />

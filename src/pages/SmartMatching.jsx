@@ -17,13 +17,13 @@ import {
   Wrench
 } from 'lucide-react';
 
-export default function SmartMatching({ setActivePage }) {
+export default function SmartMatching({ problemData, setActivePage }) {
   // 1. Recommended Universities Data (3 realistic demo universities)
   const recommendedUniversities = [
     {
       id: "uni-1",
-      name: "PSG College of Technology",
-      location: "Coimbatore, Tamil Nadu",
+      name: "Example University",
+      location: "Ranchi, Jharkhand",
       department: "Department of Water Resources & Civil Engineering",
       expertise: "Hydraulics, Turbidity Filtration, Sensor Networks",
       matchPercentage: 94,
@@ -74,7 +74,7 @@ export default function SmartMatching({ setActivePage }) {
   const recommendedPartners = [
     {
       id: "partner-1",
-      name: "WaterTech Solutions Pvt. Ltd.",
+      name: "WaterTech Solutions",
       type: "Startup / Tech Partner",
       matchPercentage: 87,
       expertise: ["IoT", "Water Monitoring", "Field Deployment"],
@@ -117,16 +117,16 @@ export default function SmartMatching({ setActivePage }) {
   // 3. Recommended Team Data
   const recommendedTeam = {
     problemId: "PR-2026-8942",
-    problemTitle: "Water contamination and leakage in rural school supply line",
+    problemTitle: problemData?.title || "Seasonal drinking water shortage in a rural community",
     facultyMentor: {
-      name: "Dr. R. Sundaram",
+      name: "Dr. Example",
       title: "Professor & Head of Environmental Engineering",
-      institution: "PSG College of Technology",
+      institution: "Example University",
       experience: "18+ years in Fluid Mechanics & Rural Sanitation Tech"
     },
     studentTeam: {
       name: "Team HydroShield",
-      membersCount: "4 Core Members",
+      membersCount: "5 Core Members",
       degree: "4th Year B.Tech Civil & IoT Innovation Group",
       lead: "Karthik Raja (Student Team Lead)"
     },
@@ -454,19 +454,19 @@ export default function SmartMatching({ setActivePage }) {
               
               <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700/80 text-center space-y-1">
                 <span className="text-[10px] font-bold text-blue-400 uppercase">1. University</span>
-                <p className="font-extrabold text-sm text-white">PSG College of Tech</p>
+                <p className="font-extrabold text-sm text-white">Example University</p>
                 <p className="text-[11px] text-slate-400">Water Resources & Civil Lab</p>
               </div>
 
               <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700/80 text-center space-y-1">
                 <span className="text-[10px] font-bold text-indigo-400 uppercase">2. Student Team</span>
                 <p className="font-extrabold text-sm text-white">Team HydroShield</p>
-                <p className="text-[11px] text-slate-400">4th Year B.Tech (4 Members)</p>
+                <p className="text-[11px] text-slate-400">4th Year B.Tech (5 Members)</p>
               </div>
 
               <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700/80 text-center space-y-1">
                 <span className="text-[10px] font-bold text-teal-400 uppercase">3. Industry Partner</span>
-                <p className="font-extrabold text-sm text-white">CleanWater CSR Foundation</p>
+                <p className="font-extrabold text-sm text-white">WaterTech Solutions</p>
                 <p className="text-[11px] text-slate-400">₹4.5L Grant & Hardware Tech</p>
               </div>
 
