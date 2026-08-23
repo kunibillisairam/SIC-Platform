@@ -33,20 +33,16 @@ export default function Navbar({ activePage, setActivePage }) {
 
   return (
     <header className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white shadow-xl">
-      {/* Top Govt / SIH Banner */}
+      {/* Top Banner */}
       <div className="bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 py-1.5 px-4 text-xs border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto flex items-center justify-between font-medium">
           <div className="flex items-center space-x-2 text-slate-300">
-            <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-600/30 text-blue-300 border border-blue-500/30">
-              SIH26043
-            </span>
-            <span className="hidden sm:inline text-slate-400">|</span>
-            <span className="text-slate-200">Smart India Hackathon 2026 Innovation Platform</span>
+            <span className="text-slate-200 font-medium">Societal Innovation Collaboration Platform</span>
           </div>
           <div className="flex items-center space-x-3 text-slate-300">
             <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              TEAM THE OUTLIERS
+              ACTIVE PLATFORM
             </span>
           </div>
         </div>
@@ -67,10 +63,7 @@ export default function Navbar({ activePage, setActivePage }) {
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-extrabold text-base tracking-tight text-white group-hover:text-blue-300 transition-colors">
-                  SIH26043
-                </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/60 text-blue-300 font-semibold border border-blue-700/50">
-                  THE OUTLIERS
+                  SIC Platform
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-medium line-clamp-1">

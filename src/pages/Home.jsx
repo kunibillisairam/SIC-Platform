@@ -173,19 +173,15 @@ export default function Home({ setActivePage }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             
-            {/* Team & Problem Statement Badges */}
+            {/* Platform Badges */}
             <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 p-1.5 px-4 rounded-full bg-slate-800/90 border border-slate-700/80 shadow-inner">
               <span className="inline-flex items-center space-x-1.5 text-xs font-extrabold px-2.5 py-1 rounded-full bg-blue-600 text-white tracking-wider uppercase">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>SIH26043</span>
-              </span>
-              <span className="text-slate-400 text-xs font-semibold">|</span>
-              <span className="text-slate-200 text-xs font-bold tracking-wide">
-                TEAM THE OUTLIERS
+                <span>Societal Innovation</span>
               </span>
               <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
               <span className="hidden sm:inline text-xs text-emerald-400 font-semibold">
-                Internal Hackathon Prototype
+                Interactive Platform
               </span>
             </div>
 
@@ -407,7 +403,7 @@ export default function Home({ setActivePage }) {
               Built for Scale, Accuracy & Governance
             </h2>
             <p className="text-slate-600 text-base mt-2">
-              Explore the four core engines that power the SIH26043 societal innovation ecosystem.
+              Explore the four core engines that power the societal innovation ecosystem.
             </p>
           </div>
 
@@ -487,7 +483,7 @@ export default function Home({ setActivePage }) {
       <section className="py-16 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-4 text-center space-y-6">
           <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-400/30">
-            SIH 2026 INTERNAL HACKATHON DEMO
+            SOCIETAL INNOVATION PLATFORM DEMO
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold">
             Ready to experience the end-to-end prototype?

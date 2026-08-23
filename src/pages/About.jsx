@@ -10,10 +10,10 @@ export default function About() {
         <div className="bg-slate-900 text-white rounded-2xl p-8 border border-slate-800 shadow-xl space-y-4">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-400/30">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>SIH26043 • Smart India Hackathon 2026</span>
+            <span>Societal Innovation Collaboration Platform</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold">
-            Team THE OUTLIERS
+            About The Platform
           </h1>
           <p className="text-slate-300 text-base max-w-3xl leading-relaxed">
             We are building the <strong>Societal Innovation Collaboration Platform</strong> — a nationwide engine that bridges the gap between ground-level community challenges and university R&D, CSR funding, and government execution.
