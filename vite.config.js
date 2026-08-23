@@ -8,4 +8,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  server: {
+    hmr: {
+      overlay: false, // Disables error overlay popups for non-existent HTML path requests
+    },
+  },
 })
