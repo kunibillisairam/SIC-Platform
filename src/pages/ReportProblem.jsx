@@ -142,7 +142,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
 
           <div className="flex items-center space-x-1.5 px-3 py-1 rounded bg-[#FAF7F2] border border-[#E5DFC5] text-xs text-[#164A7B] font-bold shrink-0">
             <ShieldCheck className="w-4 h-4 text-[#164A7B]" />
-            <span>SIH26043 Public Portal</span>
+            <span>Public Innovation Portal</span>
           </div>
         </div>
 
@@ -151,7 +151,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="flex items-center space-x-2 font-bold text-slate-200">
               <Lightbulb className="w-4 h-4 text-[#C47A00] shrink-0" />
-              <span>SIH Evaluator Quick Presets:</span>
+              <span>Evaluator Quick Presets:</span>
             </div>
             <div className="flex flex-wrap gap-2 w-full sm:w-auto">
               {samplePresets.map((p, idx) => (
@@ -187,7 +187,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                   Processing Problem Submission
                 </h3>
                 <p className="text-xs text-[#5B6875] font-bold uppercase tracking-wider">
-                  SIH26043 Automated Pipeline
+                  Automated Pipeline
                 </p>
               </div>
 

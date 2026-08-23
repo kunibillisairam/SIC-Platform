@@ -40,14 +40,10 @@ export default function Navbar({ activePage, setActivePage }) {
       <div className="bg-[#EFE9DD] py-1.5 px-4 text-xs border-b border-[#E5DFC5]">
         <div className="max-w-7xl mx-auto flex items-center justify-between font-medium">
           <div className="flex items-center space-x-2 text-[#17202A]">
-            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#164A7B] text-white">
-              SIH26043
-            </span>
-            <span className="hidden sm:inline text-[#5B6875]">|</span>
             <span className="text-[#17202A] font-semibold">Societal Innovation Collaboration Platform</span>
           </div>
           <div className="flex items-center space-x-2">
-            <span className="text-xs text-[#16865B] font-bold bg-white/80 px-2 py-0.5 rounded border border-[#E5DFC5]">
+            <span className="text-xs text-[#16865B] font-bold bg-white/80 px-2.5 py-0.5 rounded border border-[#E5DFC5]">
               TEAM THE OUTLIERS
             </span>
           </div>
@@ -69,9 +65,6 @@ export default function Navbar({ activePage, setActivePage }) {
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-extrabold text-sm tracking-tight text-[#17202A]">
-                  SIH26043
-                </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#164A7B] text-white font-bold">
                   THE OUTLIERS
                 </span>
               </div>

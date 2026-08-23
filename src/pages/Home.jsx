@@ -132,7 +132,7 @@ export default function Home({ setActivePage }) {
   return (
     <div className="bg-[#FAF7F2] min-h-screen text-[#17202A]">
       
-      {/* HERO SECTION - LIGHT BISCUIT THEME */}
+      {/* HERO SECTION */}
       <section className="bg-[#FAF7F2] text-[#17202A] pt-10 pb-14 border-b border-[#E5DFC5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-5 text-center sm:text-left">
@@ -140,7 +140,7 @@ export default function Home({ setActivePage }) {
             {/* Badges */}
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded bg-white text-[#164A7B] text-xs font-bold border border-[#E5DFC5] shadow-xs">
               <ShieldCheck className="w-3.5 h-3.5 text-[#164A7B]" />
-              <span>SIH26043 • TEAM THE OUTLIERS</span>
+              <span>TEAM THE OUTLIERS</span>
             </div>
 
             {/* Headline */}
@@ -357,11 +357,11 @@ export default function Home({ setActivePage }) {
         </div>
       </section>
 
-      {/* CTA BANNER - LIGHT BISCUIT & NAVY CARD */}
+      {/* CTA BANNER */}
       <section className="py-10 bg-[#FAF7F2] border-t border-[#E5DFC5]">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-4 bg-white p-8 rounded-md border border-[#E5DFC5] shadow-xs">
           <h2 className="text-xl sm:text-2xl font-extrabold text-[#17202A]">
-            Ready to test the SIH26043 Prototype?
+            Ready to test the Prototype?
           </h2>
           <p className="text-[#5B6875] text-xs sm:text-sm max-w-xl mx-auto">
             Report a ground-level problem, observe instant AI analysis & matching, and track progress through to measurable governance impact.

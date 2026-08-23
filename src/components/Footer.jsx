@@ -14,8 +14,7 @@ export default function Footer({ setActivePage }) {
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <span className="font-extrabold text-base text-white tracking-tight">SIH26043</span>
-                <span className="ml-2 text-[10px] px-2 py-0.5 rounded bg-[#164A7B] text-white font-bold border border-white/10">
+                <span className="font-extrabold text-base text-white tracking-tight">
                   THE OUTLIERS
                 </span>
               </div>
@@ -26,7 +25,7 @@ export default function Footer({ setActivePage }) {
             <div className="flex items-center space-x-3 pt-1">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#164A7B]/60 text-slate-200 border border-[#164A7B]">
                 <Award className="w-3.5 h-3.5 text-[#C47A00]" />
-                Smart India Hackathon 2026 Innovation Platform
+                Societal Innovation Platform
               </span>
             </div>
           </div>
@@ -88,7 +87,7 @@ export default function Footer({ setActivePage }) {
         </div>
 
         <div className="pt-6 border-t border-[#164A7B]/60 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-300 gap-3">
-          <p>© 2026 Team THE OUTLIERS — Smart India Hackathon PS SIH26043.</p>
+          <p>© 2026 Team THE OUTLIERS — Societal Innovation Collaboration Platform.</p>
           <span className="text-slate-300">Centralized Societal Innovation Ecosystem</span>
         </div>
       </div>
