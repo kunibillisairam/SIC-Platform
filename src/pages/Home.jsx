@@ -132,32 +132,33 @@ export default function Home({ setActivePage }) {
   return (
     <div className="bg-[#FAF7F2] min-h-screen text-[#17202A]">
       
-      {/* HERO SECTION */}
-      <section className="bg-[#0B2F50] text-white pt-10 pb-16 border-b border-[#164A7B]">
+      {/* HERO SECTION - LIGHT BISCUIT THEME */}
+      <section className="bg-[#FAF7F2] text-[#17202A] pt-10 pb-14 border-b border-[#E5DFC5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-5 text-center sm:text-left">
             
             {/* Badges */}
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded bg-[#164A7B] text-slate-100 text-xs font-bold border border-white/10">
-              <ShieldCheck className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded bg-white text-[#164A7B] text-xs font-bold border border-[#E5DFC5] shadow-xs">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#164A7B]" />
               <span>SIH26043 • TEAM THE OUTLIERS</span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white">
-              From Community Problems to Real-World Solutions
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-[#17202A]">
+              From Community Problems to{' '}
+              <span className="text-[#164A7B]">Real-World Solutions</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-slate-200 text-sm sm:text-base font-normal leading-relaxed max-w-3xl">
+            <p className="text-[#5B6875] text-sm sm:text-base font-normal leading-relaxed max-w-3xl">
               An intelligent collaboration platform connecting societal problems with universities, industry and government to turn challenges into measurable impact.
             </p>
 
-            {/* Buttons */}
+            {/* Action Buttons */}
             <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
               <button
                 onClick={() => setActivePage('report')}
-                className="w-full sm:w-auto px-6 py-2.5 bg-[#16865B] hover:bg-[#116846] text-white font-bold text-xs rounded-md shadow-sm transition-colors border border-white/20 flex items-center justify-center space-x-2"
+                className="w-full sm:w-auto px-6 py-2.5 bg-[#16865B] hover:bg-[#116846] text-white font-bold text-xs rounded-md shadow-xs transition-colors flex items-center justify-center space-x-2 border border-[#16865B]"
               >
                 <FilePlus2 className="w-4 h-4" />
                 <span>Report a Problem</span>
@@ -166,7 +167,7 @@ export default function Home({ setActivePage }) {
 
               <button
                 onClick={() => setActivePage('explore')}
-                className="w-full sm:w-auto px-6 py-2.5 bg-[#164A7B] hover:bg-[#0B2F50] text-white font-bold text-xs rounded-md shadow-sm transition-colors border border-white/20 flex items-center justify-center space-x-2"
+                className="w-full sm:w-auto px-6 py-2.5 bg-[#164A7B] hover:bg-[#0B2F50] text-white font-bold text-xs rounded-md shadow-xs transition-colors flex items-center justify-center space-x-2 border border-[#164A7B]"
               >
                 <Search className="w-4 h-4" />
                 <span>Explore Solutions</span>
@@ -175,21 +176,21 @@ export default function Home({ setActivePage }) {
 
             {/* Quick Metrics Bar */}
             <div className="pt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
-              <div className="p-3 rounded-md bg-[#164A7B]/40 border border-[#164A7B]">
-                <p className="text-[10px] text-slate-300 uppercase font-bold">Categorization</p>
-                <p className="text-sm font-bold text-white mt-0.5">Automated AI</p>
+              <div className="p-3.5 rounded-md bg-white border border-[#E5DFC5] shadow-xs">
+                <p className="text-[10px] text-[#5B6875] uppercase font-bold">Categorization</p>
+                <p className="text-sm font-extrabold text-[#164A7B] mt-0.5">Automated AI</p>
               </div>
-              <div className="p-3 rounded-md bg-[#164A7B]/40 border border-[#164A7B]">
-                <p className="text-[10px] text-slate-300 uppercase font-bold">Duplicate Check</p>
-                <p className="text-sm font-bold text-white mt-0.5">Clustering Engine</p>
+              <div className="p-3.5 rounded-md bg-white border border-[#E5DFC5] shadow-xs">
+                <p className="text-[10px] text-[#5B6875] uppercase font-bold">Duplicate Check</p>
+                <p className="text-sm font-extrabold text-[#164A7B] mt-0.5">Clustering Engine</p>
               </div>
-              <div className="p-3 rounded-md bg-[#164A7B]/40 border border-[#164A7B]">
-                <p className="text-[10px] text-slate-300 uppercase font-bold">Smart Matching</p>
-                <p className="text-sm font-bold text-white mt-0.5">Multi-Stakeholder</p>
+              <div className="p-3.5 rounded-md bg-white border border-[#E5DFC5] shadow-xs">
+                <p className="text-[10px] text-[#5B6875] uppercase font-bold">Smart Matching</p>
+                <p className="text-sm font-extrabold text-[#164A7B] mt-0.5">Multi-Stakeholder</p>
               </div>
-              <div className="p-3 rounded-md bg-[#164A7B]/40 border border-[#164A7B]">
-                <p className="text-[10px] text-slate-300 uppercase font-bold">Lifecycle</p>
-                <p className="text-sm font-bold text-white mt-0.5">8-Stage Tracking</p>
+              <div className="p-3.5 rounded-md bg-white border border-[#E5DFC5] shadow-xs">
+                <p className="text-[10px] text-[#5B6875] uppercase font-bold">Lifecycle</p>
+                <p className="text-sm font-extrabold text-[#164A7B] mt-0.5">8-Stage Tracking</p>
               </div>
             </div>
 
@@ -356,19 +357,19 @@ export default function Home({ setActivePage }) {
         </div>
       </section>
 
-      {/* CTA FOOTER BANNER */}
-      <section className="py-10 bg-[#0B2F50] text-white border-t border-[#164A7B]">
-        <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
-          <h2 className="text-xl sm:text-2xl font-extrabold">
+      {/* CTA BANNER - LIGHT BISCUIT & NAVY CARD */}
+      <section className="py-10 bg-[#FAF7F2] border-t border-[#E5DFC5]">
+        <div className="max-w-4xl mx-auto px-4 text-center space-y-4 bg-white p-8 rounded-md border border-[#E5DFC5] shadow-xs">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-[#17202A]">
             Ready to test the SIH26043 Prototype?
           </h2>
-          <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto">
+          <p className="text-[#5B6875] text-xs sm:text-sm max-w-xl mx-auto">
             Report a ground-level problem, observe instant AI analysis & matching, and track progress through to measurable governance impact.
           </p>
           <div className="pt-1 flex justify-center">
             <button
               onClick={() => setActivePage('report')}
-              className="px-6 py-2.5 bg-[#16865B] hover:bg-[#116846] text-white font-bold text-xs rounded-md shadow-sm border border-white/20 transition-colors flex items-center space-x-2"
+              className="px-6 py-2.5 bg-[#16865B] hover:bg-[#116846] text-white font-bold text-xs rounded-md shadow-xs border border-[#16865B] transition-colors flex items-center space-x-2"
             >
               <FilePlus2 className="w-4 h-4" />
               <span>Start Interactive Demo</span>

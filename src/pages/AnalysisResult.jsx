@@ -13,27 +13,27 @@ export default function AnalysisResult({ problemData, setActivePage }) {
   };
 
   return (
-    <div className="bg-[#F5F7FA] min-h-screen py-8 text-[#17202A]">
+    <div className="bg-[#FAF7F2] min-h-screen py-8 text-[#17202A]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         
-        {/* Banner */}
-        <div className="bg-[#0B2F50] text-white rounded-md p-6 border border-[#164A7B] shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        {/* Header Banner - Light Biscuit Theme */}
+        <div className="bg-white text-[#17202A] rounded-md p-6 border border-[#E5DFC5] shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="space-y-1.5">
             <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded bg-[#16865B] text-white text-xs font-bold">
               <CheckCircle2 className="w-3.5 h-3.5" />
               <span>AI Analysis Complete • Problem #PR-2026-8942</span>
             </div>
-            <h1 className="text-xl sm:text-2xl font-extrabold text-white">
+            <h1 className="text-xl sm:text-2xl font-extrabold text-[#17202A]">
               {data.title}
             </h1>
-            <p className="text-slate-300 text-xs">
-              Sector: <strong className="text-white">{data.category}</strong> | Location: <strong className="text-white">{data.district}</strong>
+            <p className="text-[#5B6875] text-xs">
+              Sector: <strong className="text-[#17202A]">{data.category}</strong> | Location: <strong className="text-[#17202A]">{data.district}</strong>
             </p>
           </div>
 
           <button
             onClick={() => setActivePage('matching')}
-            className="shrink-0 px-4 py-2 bg-[#16865B] hover:bg-[#116846] text-white text-xs font-bold rounded-md transition-colors flex items-center space-x-1.5 border border-white/20"
+            className="shrink-0 px-4 py-2 bg-[#16865B] hover:bg-[#116846] text-white text-xs font-bold rounded-md transition-colors flex items-center space-x-1.5 border border-[#16865B]"
           >
             <span>Proceed to Smart Matching</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -43,8 +43,8 @@ export default function AnalysisResult({ problemData, setActivePage }) {
         {/* 3 AI Modules Result Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           
-          {/* Box 1: Categorization & Scope */}
-          <div className="bg-white rounded-md p-5 border border-[#D9E0E7] shadow-xs space-y-3">
+          {/* Box 1 */}
+          <div className="bg-white rounded-md p-5 border border-[#E5DFC5] shadow-xs space-y-3">
             <div className="flex items-center space-x-3">
               <div className="w-9 h-9 rounded bg-[#164A7B] text-white flex items-center justify-center font-bold">
                 <Tag className="w-4 h-4" />
@@ -54,7 +54,7 @@ export default function AnalysisResult({ problemData, setActivePage }) {
                 <p className="text-[11px] text-[#5B6875]">Domain Classification</p>
               </div>
             </div>
-            <div className="pt-2 space-y-1.5 text-xs border-t border-[#D9E0E7]">
+            <div className="pt-2 space-y-1.5 text-xs border-t border-[#E5DFC5]">
               <div className="flex justify-between py-0.5">
                 <span className="text-[#5B6875]">Detected Sector:</span>
                 <span className="font-bold text-[#17202A]">{data.category}</span>
@@ -70,8 +70,8 @@ export default function AnalysisResult({ problemData, setActivePage }) {
             </div>
           </div>
 
-          {/* Box 2: Priority Assessment */}
-          <div className="bg-white rounded-md p-5 border border-[#D9E0E7] shadow-xs space-y-3">
+          {/* Box 2 */}
+          <div className="bg-white rounded-md p-5 border border-[#E5DFC5] shadow-xs space-y-3">
             <div className="flex items-center space-x-3">
               <div className="w-9 h-9 rounded bg-[#C47A00] text-white flex items-center justify-center font-bold">
                 <AlertTriangle className="w-4 h-4" />
@@ -81,7 +81,7 @@ export default function AnalysisResult({ problemData, setActivePage }) {
                 <p className="text-[11px] text-[#5B6875]">Impact vs Risk Matrix</p>
               </div>
             </div>
-            <div className="pt-2 space-y-1.5 text-xs border-t border-[#D9E0E7]">
+            <div className="pt-2 space-y-1.5 text-xs border-t border-[#E5DFC5]">
               <div className="flex justify-between items-center py-0.5">
                 <span className="text-[#5B6875]">Calculated Severity:</span>
                 <span className="px-2 py-0.5 rounded bg-[#C0392B]/10 text-[#C0392B] font-extrabold text-[10px]">
@@ -99,8 +99,8 @@ export default function AnalysisResult({ problemData, setActivePage }) {
             </div>
           </div>
 
-          {/* Box 3: Duplicate Detection */}
-          <div className="bg-white rounded-md p-5 border border-[#D9E0E7] shadow-xs space-y-3">
+          {/* Box 3 */}
+          <div className="bg-white rounded-md p-5 border border-[#E5DFC5] shadow-xs space-y-3">
             <div className="flex items-center space-x-3">
               <div className="w-9 h-9 rounded bg-[#164A7B] text-white flex items-center justify-center font-bold">
                 <GitMerge className="w-4 h-4" />
@@ -110,7 +110,7 @@ export default function AnalysisResult({ problemData, setActivePage }) {
                 <p className="text-[11px] text-[#5B6875]">Geospatial Clustering</p>
               </div>
             </div>
-            <div className="pt-2 space-y-1.5 text-xs border-t border-[#D9E0E7]">
+            <div className="pt-2 space-y-1.5 text-xs border-t border-[#E5DFC5]">
               <div className="flex justify-between py-0.5">
                 <span className="text-[#5B6875]">Similar Reports:</span>
                 <span className="font-bold text-[#17202A]">2 Reports nearby</span>
@@ -129,23 +129,23 @@ export default function AnalysisResult({ problemData, setActivePage }) {
         </div>
 
         {/* Detailed Extraction & Next Step recommendation */}
-        <div className="bg-white rounded-md p-6 border border-[#D9E0E7] shadow-xs space-y-4">
+        <div className="bg-white rounded-md p-6 border border-[#E5DFC5] shadow-xs space-y-4">
           <h3 className="text-base font-extrabold text-[#17202A]">
             AI Key Requirements Extraction
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-            <div className="p-3.5 rounded-md bg-[#F5F7FA] border border-[#D9E0E7]">
+            <div className="p-3.5 rounded-md bg-[#FAF7F2] border border-[#E5DFC5]">
               <span className="font-bold text-[#17202A] block mb-1">Target Engineering Domains</span>
               <span className="text-[#5B6875]">Environmental Engineering, IoT Water Quality Sensors, Civil Hydraulics</span>
             </div>
-            <div className="p-3.5 rounded-md bg-[#F5F7FA] border border-[#D9E0E7]">
+            <div className="p-3.5 rounded-md bg-[#FAF7F2] border border-[#E5DFC5]">
               <span className="font-bold text-[#17202A] block mb-1">Recommended Solution Scope</span>
               <span className="text-[#5B6875]">Low-cost real-time turbidity sensor & solar-powered community filtration unit</span>
             </div>
           </div>
 
-          <div className="pt-3 border-t border-[#D9E0E7] flex justify-between items-center text-xs">
+          <div className="pt-3 border-t border-[#E5DFC5] flex justify-between items-center text-xs">
             <span className="font-semibold text-[#5B6875]">Next Stage: Automated University & Industry Matchmaking</span>
             <button
               onClick={() => setActivePage('matching')}
