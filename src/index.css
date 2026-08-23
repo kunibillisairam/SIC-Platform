@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
-@theme {
-  --color-gov-primary: #164A7B;
-  --color-gov-primary-dark: #0B2F50;
-  --color-gov-success: #16865B;
-  --color-gov-warning: #C47A00;
-  --color-gov-danger: #C0392B;
-  --color-gov-bg: #F5F7FA;
-  --color-gov-white: #FFFFFF;
-  --color-gov-border: #D9E0E7;
-  --color-gov-text-primary: #17202A;
-  --color-gov-text-secondary: #5B6875;
-}
-
 @layer base {
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F5F7FA;
+    color: #17202A;
   }
 }
 
-/* Custom scrollbar and smooth transitions */
+/* Custom exact hex color utilities according to approved SIH26043 design system */
+:root {
+  --color-sih-primary: #164A7B;
+  --color-sih-dark: #0B2F50;
+  --color-sih-success: #16865B;
+  --color-sih-warning: #C47A00;
+  --color-sih-danger: #C0392B;
+  --color-sih-bg: #F5F7FA;
+  --color-sih-card: #FFFFFF;
+  --color-sih-border: #D9E0E7;
+  --color-sih-text: #17202A;
+  --color-sih-muted: #5B6875;
+}
+
 html {
   scroll-behavior: smooth;
 }
-

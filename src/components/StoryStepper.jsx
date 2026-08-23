@@ -10,7 +10,6 @@ export default function StoryStepper({ activePage, setActivePage }) {
     { id: 'dashboard', label: '5. Impact Analytics', icon: BarChart3 },
   ];
 
-  // Map page to current active step index
   const getStepIndex = (page) => {
     switch (page) {
       case 'report': return 0;
@@ -24,15 +23,15 @@ export default function StoryStepper({ activePage, setActivePage }) {
 
   const currentIndex = getStepIndex(activePage);
 
-  if (currentIndex === -1) return null; // Don't show on Home or About page
+  if (currentIndex === -1) return null;
 
   return (
-    <div className="bg-gov-bg border-b border-gov-border text-gov-text-primary py-3.5 px-4 shadow-sm">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+    <div className="bg-[#0B2F50] border-b border-[#164A7B] text-white py-2.5 px-4">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
         
-        <div className="flex items-center space-x-2 text-gov-text-secondary font-semibold shrink-0">
-          <span className="w-2.5 h-2.5 rounded-full bg-gov-primary"></span>
-          <span className="text-gov-primary font-extrabold uppercase tracking-wider text-[11px]">SIH Demo Storyline:</span>
+        <div className="flex items-center space-x-2 text-slate-200 font-semibold shrink-0">
+          <span className="w-2 h-2 rounded-full bg-[#16865B]"></span>
+          <span className="text-slate-200 font-bold uppercase tracking-wider text-[11px]">SIH Demo Storyline:</span>
         </div>
 
         {/* Stepper buttons */}
@@ -49,20 +48,20 @@ export default function StoryStepper({ activePage, setActivePage }) {
                     setActivePage(stg.id);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all shrink-0 ${
+                  className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-md text-xs font-bold transition-colors shrink-0 ${
                     isCurrent
-                      ? 'bg-gov-primary text-white shadow-sm ring-1 ring-gov-primary'
+                      ? 'bg-[#164A7B] text-white border border-white/20'
                       : isPassed
-                      ? 'bg-white border border-gov-success text-gov-success hover:bg-slate-50'
-                      : 'bg-white border border-gov-border text-gov-text-secondary hover:bg-slate-50'
+                      ? 'bg-white/10 text-[#16865B] hover:bg-white/15'
+                      : 'bg-white/5 text-slate-300 hover:bg-white/10'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isCurrent ? 'text-white' : isPassed ? 'text-gov-success' : 'text-gov-text-secondary'}`} />
+                  <Icon className="w-3.5 h-3.5" />
                   <span className="whitespace-nowrap">{stg.label}</span>
                 </button>
 
                 {idx < steps.length - 1 && (
-                  <ChevronRight className="w-3.5 h-3.5 text-gov-border shrink-0 hidden md:block" />
+                  <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0 hidden md:block" />
                 )}
               </React.Fragment>
             );
@@ -73,4 +72,3 @@ export default function StoryStepper({ activePage, setActivePage }) {
     </div>
   );
 }
-
