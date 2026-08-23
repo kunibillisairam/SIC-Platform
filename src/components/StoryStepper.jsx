@@ -27,12 +27,12 @@ export default function StoryStepper({ activePage, setActivePage }) {
   if (currentIndex === -1) return null; // Don't show on Home or About page
 
   return (
-    <div className="bg-slate-900 border-b border-slate-800 text-white py-3 px-4 shadow-inner">
+    <div className="bg-gov-bg border-b border-gov-border text-gov-text-primary py-3.5 px-4 shadow-sm">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
         
-        <div className="flex items-center space-x-2 text-slate-300 font-semibold shrink-0">
-          <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-          <span className="text-blue-300 font-extrabold uppercase tracking-wider text-[11px]">SIH Demo Storyline:</span>
+        <div className="flex items-center space-x-2 text-gov-text-secondary font-semibold shrink-0">
+          <span className="w-2.5 h-2.5 rounded-full bg-gov-primary"></span>
+          <span className="text-gov-primary font-extrabold uppercase tracking-wider text-[11px]">SIH Demo Storyline:</span>
         </div>
 
         {/* Stepper buttons */}
@@ -51,18 +51,18 @@ export default function StoryStepper({ activePage, setActivePage }) {
                   }}
                   className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all shrink-0 ${
                     isCurrent
-                      ? 'bg-blue-600 text-white shadow-md ring-1 ring-blue-400'
+                      ? 'bg-gov-primary text-white shadow-sm ring-1 ring-gov-primary'
                       : isPassed
-                      ? 'bg-slate-800 text-emerald-400 hover:bg-slate-700'
-                      : 'bg-slate-800/60 text-slate-400 hover:bg-slate-800 hover:text-slate-200'
+                      ? 'bg-white border border-gov-success text-gov-success hover:bg-slate-50'
+                      : 'bg-white border border-gov-border text-gov-text-secondary hover:bg-slate-50'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isCurrent ? 'text-white' : isPassed ? 'text-emerald-400' : 'text-slate-500'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isCurrent ? 'text-white' : isPassed ? 'text-gov-success' : 'text-gov-text-secondary'}`} />
                   <span className="whitespace-nowrap">{stg.label}</span>
                 </button>
 
                 {idx < steps.length - 1 && (
-                  <ChevronRight className="w-3.5 h-3.5 text-slate-600 shrink-0 hidden md:block" />
+                  <ChevronRight className="w-3.5 h-3.5 text-gov-border shrink-0 hidden md:block" />
                 )}
               </React.Fragment>
             );
@@ -73,3 +73,4 @@ export default function StoryStepper({ activePage, setActivePage }) {
     </div>
   );
 }
+

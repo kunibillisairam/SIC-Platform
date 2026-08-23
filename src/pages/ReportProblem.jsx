@@ -80,28 +80,28 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen py-10 sm:py-14">
+    <div className="bg-gov-bg min-h-screen py-10 sm:py-14">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Page Header */}
         <div className="mb-8 text-center sm:text-left space-y-2">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-extrabold border border-blue-200">
-            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-slate-100 text-gov-primary text-xs font-bold border border-gov-border">
+            <Sparkles className="w-3.5 h-3.5 text-gov-primary" />
             <span>AI-Assisted Citizen Problem Intake</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-gov-text-primary tracking-tight">
             Report a Community Problem
           </h1>
-          <p className="text-slate-600 text-sm">
+          <p className="text-gov-text-secondary text-sm">
             Submit a real-world societal challenge. Our AI engine will analyze, categorize, prioritize, and check for duplicate reports instantly.
           </p>
         </div>
 
         {/* Demo Preset Selector Bar */}
-        <div className="mb-6 bg-blue-900/90 text-white rounded-2xl p-4 sm:p-5 border border-blue-800 shadow-md">
+        <div className="mb-6 bg-white text-gov-text-primary rounded-lg p-4 sm:p-5 border border-gov-border shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <div className="flex items-center space-x-2 text-xs font-bold text-blue-200">
-              <Lightbulb className="w-4 h-4 text-amber-400 shrink-0" />
+            <div className="flex items-center space-x-2 text-xs font-bold text-gov-text-secondary">
+              <Lightbulb className="w-4 h-4 text-gov-warning shrink-0" />
               <span>Quick Demo Presets for SIH Evaluators:</span>
             </div>
             <div className="flex flex-wrap gap-2 w-full sm:w-auto">
@@ -110,10 +110,10 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                   key={idx}
                   type="button"
                   onClick={() => loadPreset(p)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-extrabold transition-colors border ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border ${
                     formData.title === p.title
-                      ? 'bg-blue-600 text-white border-blue-400 shadow'
-                      : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                      ? 'bg-gov-primary text-white border-gov-primary'
+                      : 'bg-white text-gov-text-secondary border-gov-border hover:bg-slate-50'
                   }`}
                 >
                   {p.label}
@@ -124,20 +124,20 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
         </div>
 
         {/* Main Form Box */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-xl p-6 sm:p-8 relative overflow-hidden">
+        <div className="bg-white rounded-lg border border-gov-border shadow-sm p-6 sm:p-8 relative overflow-hidden">
           
           {/* Overlay loading state */}
           {isAnalyzing && (
-            <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm z-20 flex flex-col items-center justify-center text-white p-6 text-center space-y-4">
-              <div className="w-16 h-16 rounded-2xl bg-blue-600/30 border border-blue-400/40 flex items-center justify-center shadow-lg animate-pulse">
-                <Loader2 className="w-8 h-8 text-blue-400 animate-spin" />
+            <div className="absolute inset-0 bg-white/95 z-20 flex flex-col items-center justify-center text-gov-text-primary p-6 text-center space-y-4">
+              <div className="w-14 h-14 rounded-lg bg-gov-primary/10 flex items-center justify-center shadow-sm">
+                <Loader2 className="w-8 h-8 text-gov-primary animate-spin" />
               </div>
-              <h3 className="text-xl font-extrabold">Running AI Problem Intelligence...</h3>
-              <p className="text-sm text-blue-200 max-w-md font-semibold">
+              <h3 className="text-lg font-bold text-gov-primary-dark">Running AI Problem Analysis...</h3>
+              <p className="text-xs text-gov-text-secondary max-w-md font-medium">
                 {analysisStep}
               </p>
-              <div className="w-64 h-2 rounded-full bg-slate-800 overflow-hidden mt-4">
-                <div className="h-full bg-gradient-to-r from-blue-500 to-emerald-400 rounded-full animate-pulse w-3/4"></div>
+              <div className="w-64 h-2 rounded-full bg-slate-100 border border-gov-border overflow-hidden mt-4">
+                <div className="h-full bg-gov-primary rounded-full w-3/4"></div>
               </div>
             </div>
           )}
@@ -146,7 +146,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
             
             {/* Problem Title */}
             <div>
-              <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-gov-text-primary uppercase tracking-wider mb-2">
                 Problem Title *
               </label>
               <input
@@ -154,7 +154,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                 required
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm font-semibold text-slate-900 outline-none transition-all"
+                className="w-full px-3 py-2.5 rounded-lg border border-gov-border focus:border-gov-primary focus:ring-1 focus:ring-gov-primary/20 text-sm font-medium text-gov-text-primary outline-none bg-white transition-all"
                 placeholder="e.g., Agricultural runoff polluting village drinking pond"
               />
             </div>
@@ -162,13 +162,13 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
             {/* Category & Urgency */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+                <label className="block text-xs font-bold text-gov-text-primary uppercase tracking-wider mb-2">
                   Primary Sector / Category *
                 </label>
                 <select
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm font-semibold text-slate-900 outline-none bg-white"
+                  className="w-full px-3 py-2.5 rounded-lg border border-gov-border focus:border-gov-primary focus:ring-1 focus:ring-gov-primary/20 text-sm font-medium text-gov-text-primary outline-none bg-white"
                 >
                   <option value="Water & Sanitation">Water & Sanitation</option>
                   <option value="Agriculture & Rural Tech">Agriculture & Rural Tech</option>
@@ -180,13 +180,13 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
               </div>
 
               <div>
-                <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+                <label className="block text-xs font-bold text-gov-text-primary uppercase tracking-wider mb-2">
                   Urgency Level *
                 </label>
                 <select
                   value={formData.urgency}
                   onChange={(e) => setFormData({ ...formData, urgency: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-sm font-semibold text-slate-900 outline-none bg-white"
+                  className="w-full px-3 py-2.5 rounded-lg border border-gov-border focus:border-gov-primary focus:ring-1 focus:ring-gov-primary/20 text-sm font-medium text-gov-text-primary outline-none bg-white"
                 >
                   <option value="Critical">Critical (Immediate Health/Safety Hazard)</option>
                   <option value="High">High (Severe Local Impact)</option>
@@ -199,7 +199,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
             {/* Location details */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+                <label className="block text-xs font-bold text-gov-text-primary uppercase tracking-wider mb-2">
                   District & State *
                 </label>
                 <input
@@ -207,20 +207,20 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                   required
                   value={formData.district}
                   onChange={(e) => setFormData({ ...formData, district: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-semibold text-slate-900 outline-none"
+                  className="w-full px-3 py-2.5 rounded-lg border border-gov-border focus:border-gov-primary focus:ring-1 focus:ring-gov-primary/20 text-sm font-medium text-gov-text-primary outline-none bg-white"
                   placeholder="e.g. Coimbatore, Tamil Nadu"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+                <label className="block text-xs font-bold text-gov-text-primary uppercase tracking-wider mb-2">
                   Pincode / Postal Code
                 </label>
                 <input
                   type="text"
                   value={formData.pincode}
                   onChange={(e) => setFormData({ ...formData, pincode: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-semibold text-slate-900 outline-none"
+                  className="w-full px-3 py-2.5 rounded-lg border border-gov-border focus:border-gov-primary focus:ring-1 focus:ring-gov-primary/20 text-sm font-medium text-gov-text-primary outline-none bg-white"
                   placeholder="e.g. 641004"
                 />
               </div>
@@ -228,7 +228,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
 
             {/* Detailed Description */}
             <div>
-              <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-gov-text-primary uppercase tracking-wider mb-2">
                 Detailed Problem Description *
               </label>
               <textarea
@@ -236,37 +236,37 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                 required
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm text-slate-900 outline-none leading-relaxed font-normal"
+                className="w-full px-3 py-2.5 rounded-lg border border-gov-border focus:border-gov-primary focus:ring-1 focus:ring-gov-primary/20 text-sm text-gov-text-primary outline-none leading-relaxed font-normal bg-white"
                 placeholder="Describe the issue, ground conditions, affected community, and current challenges..."
               />
             </div>
 
             {/* Impact Scope */}
             <div>
-              <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-gov-text-primary uppercase tracking-wider mb-2">
                 Estimated Affected Population / Scope
               </label>
               <input
                 type="text"
                 value={formData.impactScope}
                 onChange={(e) => setFormData({ ...formData, impactScope: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-semibold text-slate-900 outline-none"
+                className="w-full px-3 py-2.5 rounded-lg border border-gov-border focus:border-gov-primary focus:ring-1 focus:ring-gov-primary/20 text-sm font-medium text-gov-text-primary outline-none bg-white"
                 placeholder="e.g. 500+ schoolchildren and 2,000 residents"
               />
             </div>
 
             {/* Submit Action Bar */}
-            <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center text-xs text-slate-600 font-medium">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 mr-2 shrink-0" />
+            <div className="pt-6 border-t border-gov-border flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center text-xs text-gov-text-secondary font-medium">
+                <CheckCircle2 className="w-4 h-4 text-gov-success mr-2 shrink-0" />
                 <span>AI will categorize, assign priority, & detect duplicates instantly</span>
               </div>
               
               <button
                 type="submit"
-                className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-sm rounded-xl shadow-lg hover:shadow-blue-600/40 transition-all flex items-center justify-center space-x-2"
+                className="w-full sm:w-auto px-6 py-3 bg-gov-primary hover:bg-gov-primary-dark text-white font-bold text-sm rounded-lg shadow-sm border border-gov-primary transition-colors cursor-pointer flex items-center justify-center space-x-2"
               >
-                <Sparkles className="w-4 h-4 text-blue-200" />
+                <Sparkles className="w-4 h-4 text-white" />
                 <span>Run AI Problem Analysis</span>
                 <ArrowRight className="w-4 h-4" />
               </button>

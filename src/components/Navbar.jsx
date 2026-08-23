@@ -14,69 +14,83 @@ import {
   ChevronRight
 } from 'lucide-react';
 
+import React, { useState } from 'react';
+import { 
+  Menu, 
+  X,
+  ShieldCheck,
+  ChevronRight,
+  Plus
+} from 'lucide-react';
+
 export default function Navbar({ activePage, setActivePage }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { id: 'home', label: 'Home', icon: Building2 },
-    { id: 'report', label: 'Report Problem', icon: FilePlus2 },
-    { id: 'analysis', label: 'AI Intelligence', icon: BrainCircuit },
-    { id: 'matching', label: 'Smart Matching', icon: GitMerge },
-    { id: 'projects', label: 'Projects', icon: FolderKanban },
-    { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
-    { id: 'explore', label: 'Explore', icon: Search },
-    { id: 'about', label: 'About', icon: Info },
+    { id: 'home', label: 'Home' },
+    { id: 'problems', label: 'Problems', target: 'explore' },
+    { id: 'analysis', label: 'AI Analysis' },
+    { id: 'matching', label: 'Smart Matching' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'dashboard', label: 'Dashboard' },
+    { id: 'explore', label: 'Explore', target: 'explore' },
+    { id: 'about', label: 'About' },
   ];
 
-  const handleNavClick = (id) => {
-    setActivePage(id);
+  const handleNavClick = (item) => {
+    setActivePage(item.target || item.id);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const getIsActive = (item) => {
+    const targetPage = item.target || item.id;
+    return activePage === targetPage;
+  };
+
   return (
-    <header className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white shadow-xl">
-      {/* Top Govt / SIH Banner */}
-      <div className="bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 py-1.5 px-4 text-xs border-b border-slate-800/80">
-        <div className="max-w-7xl mx-auto flex items-center justify-between font-medium">
-          <div className="flex items-center space-x-2 text-slate-300">
-            <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-600/40 text-blue-200 border border-blue-400/30">
-              SIH26043
-            </span>
-            <span className="hidden sm:inline text-slate-500">|</span>
-            <span className="text-slate-200 font-semibold">Societal Innovation Collaboration Platform</span>
+    <header className="sticky top-0 z-50 bg-white border-b border-gov-border shadow-sm text-gov-text-primary">
+      {/* Top Govt / SIH Banner (Level 1) */}
+      <div className="bg-gov-primary-dark py-2 px-4 text-xs">
+        <div className="max-w-7xl mx-auto flex items-center justify-between font-medium text-slate-200">
+          <div className="flex items-center space-x-2">
+            <span className="font-bold text-white tracking-wider">SIH26043</span>
+            <span className="text-slate-400">|</span>
+            <span className="font-medium text-slate-350">Societal Innovation Collaboration Platform</span>
           </div>
-          <div className="flex items-center space-x-3 text-slate-300">
-            <span className="flex items-center gap-1.5 text-emerald-400 font-extrabold text-xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <div className="flex items-center space-x-3">
+            <span className="font-bold text-emerald-400 text-xs tracking-wider">
               THE OUTLIERS
             </span>
           </div>
         </div>
       </div>
 
-      {/* Main Navbar */}
+      {/* Main Navbar (Level 2) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
           {/* Brand Logo & Name */}
           <div 
-            onClick={() => handleNavClick('home')}
+            onClick={() => {
+              setActivePage('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             className="flex items-center space-x-3 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200 border border-blue-400/30">
-              <ShieldCheck className="w-6 h-6 text-blue-100" />
+            <div className="w-10 h-10 rounded-lg bg-gov-primary flex items-center justify-center text-white shadow-sm">
+              <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <div className="flex items-center space-x-2">
-                <span className="font-extrabold text-base tracking-tight text-white group-hover:text-blue-300 transition-colors">
+              <div className="flex items-center space-x-1.5">
+                <span className="font-extrabold text-lg tracking-tight text-gov-primary-dark">
                   SIH26043
                 </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-900/80 text-blue-300 font-extrabold border border-blue-700/60">
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-gov-primary-dark text-white font-bold">
                   THE OUTLIERS
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400 font-medium line-clamp-1">
+              <p className="text-[10px] text-gov-text-secondary font-medium hidden sm:block">
                 Societal Innovation Collaboration Platform
               </p>
             </div>
@@ -85,20 +99,21 @@ export default function Navbar({ activePage, setActivePage }) {
           {/* Desktop Navigation Links */}
           <nav className="hidden xl:flex items-center space-x-1">
             {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = activePage === item.id;
+              const isActive = getIsActive(item);
               return (
                 <button
                   key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-extrabold transition-all duration-200 ${
+                  onClick={() => handleNavClick(item)}
+                  className={`px-3 py-2 text-sm font-semibold transition-colors relative ${
                     isActive 
-                      ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30' 
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                      ? 'text-gov-primary' 
+                      : 'text-gov-text-secondary hover:text-gov-primary-dark hover:bg-slate-50 rounded-lg'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
+                  {isActive && (
+                    <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-gov-primary"></span>
+                  )}
                 </button>
               );
             })}
@@ -107,11 +122,14 @@ export default function Navbar({ activePage, setActivePage }) {
           {/* CTA Action Button */}
           <div className="hidden sm:flex items-center space-x-3">
             <button
-              onClick={() => handleNavClick('report')}
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-xs font-extrabold rounded-lg shadow-md hover:from-emerald-600 hover:to-teal-700 transition-all border border-emerald-400/30"
+              onClick={() => {
+                setActivePage('report');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="inline-flex items-center space-x-1.5 px-4 py-2 bg-gov-primary hover:bg-gov-primary-dark text-white text-xs font-bold rounded-lg shadow-sm transition-colors cursor-pointer"
             >
-              <FilePlus2 className="w-4 h-4" />
-              <span>Report Problem</span>
+              <Plus className="w-3.5 h-3.5" />
+              <span>Report a Problem</span>
             </button>
           </div>
 
@@ -119,7 +137,7 @@ export default function Navbar({ activePage, setActivePage }) {
           <div className="xl:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none"
+              className="p-2 rounded-lg text-gov-text-secondary hover:text-gov-primary-dark hover:bg-slate-100 focus:outline-none"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -129,30 +147,41 @@ export default function Navbar({ activePage, setActivePage }) {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-1">
+        <div className="xl:hidden bg-white border-t border-gov-border px-4 pt-2 pb-4 space-y-1 shadow-inner">
           {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = activePage === item.id;
+            const isActive = getIsActive(item);
             return (
               <button
                 key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-xs font-bold transition-colors ${
+                onClick={() => handleNavClick(item)}
+                className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   isActive
-                    ? 'bg-blue-600 text-white'
-                    : 'text-slate-300 hover:bg-slate-800'
+                    ? 'bg-slate-100 text-gov-primary font-bold'
+                    : 'text-gov-text-secondary hover:bg-slate-50 hover:text-gov-primary-dark'
                 }`}
               >
-                <div className="flex items-center space-x-3">
-                  <Icon className="w-4 h-4 text-slate-400" />
-                  <span>{item.label}</span>
-                </div>
-                <ChevronRight className="w-4 h-4 opacity-70" />
+                <span>{item.label}</span>
+                <ChevronRight className="w-4 h-4 opacity-75" />
               </button>
             );
           })}
+          {/* Mobile CTA */}
+          <div className="pt-2 border-t border-gov-border mt-2">
+            <button
+              onClick={() => {
+                setActivePage('report');
+                setMobileMenuOpen(false);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="w-full flex items-center justify-center space-x-1.5 px-4 py-2.5 bg-gov-primary hover:bg-gov-primary-dark text-white text-sm font-bold rounded-lg transition-colors"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Report a Problem</span>
+            </button>
+          </div>
         </div>
       )}
     </header>
   );
 }
+
