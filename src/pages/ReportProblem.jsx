@@ -104,7 +104,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
   };
 
   return (
-    <div className="bg-[#F5F7FA] min-h-screen py-8 text-[#17202A]">
+    <div className="bg-[#FAF7F2] min-h-screen py-8 text-[#17202A]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* BREADCRUMB */}
@@ -127,7 +127,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
         </nav>
 
         {/* PAGE HEADER */}
-        <div className="mb-6 bg-white p-5 rounded-md border border-[#D9E0E7] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mb-6 bg-white p-5 rounded-md border border-[#E5DFC5] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center space-x-2">
               <Building className="w-5 h-5 text-[#164A7B]" />
@@ -140,7 +140,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
             </p>
           </div>
 
-          <div className="flex items-center space-x-1.5 px-3 py-1 rounded bg-[#F5F7FA] border border-[#D9E0E7] text-xs text-[#164A7B] font-bold shrink-0">
+          <div className="flex items-center space-x-1.5 px-3 py-1 rounded bg-[#FAF7F2] border border-[#E5DFC5] text-xs text-[#164A7B] font-bold shrink-0">
             <ShieldCheck className="w-4 h-4 text-[#164A7B]" />
             <span>SIH26043 Public Portal</span>
           </div>
@@ -173,12 +173,12 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
         </div>
 
         {/* MAIN FORM CARD */}
-        <div className="bg-white rounded-md border border-[#D9E0E7] shadow-xs p-6 sm:p-8 relative">
+        <div className="bg-white rounded-md border border-[#E5DFC5] shadow-xs p-6 sm:p-8 relative">
           
           {/* PROCESSING STATE OVERLAY */}
           {isProcessing && (
             <div className="absolute inset-0 bg-white/95 z-30 flex flex-col items-center justify-center p-6 text-center space-y-5 rounded-md">
-              <div className="w-12 h-12 rounded-full bg-[#F5F7FA] border-2 border-[#164A7B] flex items-center justify-center text-[#164A7B]">
+              <div className="w-12 h-12 rounded-full bg-[#FAF7F2] border-2 border-[#164A7B] flex items-center justify-center text-[#164A7B]">
                 <Loader2 className="w-6 h-6 animate-spin text-[#164A7B]" />
               </div>
               
@@ -191,7 +191,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                 </p>
               </div>
 
-              <div className="w-full max-w-md bg-[#F5F7FA] border border-[#D9E0E7] rounded-md p-4 space-y-2 text-left">
+              <div className="w-full max-w-md bg-[#FAF7F2] border border-[#E5DFC5] rounded-md p-4 space-y-2 text-left">
                 {processingSteps.map((step, idx) => {
                   const isDone = idx < currentStepIndex;
                   const isCurrent = idx === currentStepIndex;
@@ -204,7 +204,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                         ) : isCurrent ? (
                           <Loader2 className="w-4 h-4 text-[#164A7B] animate-spin shrink-0" />
                         ) : (
-                          <div className="w-3.5 h-3.5 rounded-full border-2 border-[#D9E0E7] shrink-0" />
+                          <div className="w-3.5 h-3.5 rounded-full border-2 border-[#E5DFC5] shrink-0" />
                         )}
                         <span className={isDone ? 'text-[#17202A]' : isCurrent ? 'text-[#164A7B] font-extrabold' : 'text-[#5B6875]'}>
                           {step}
@@ -225,7 +225,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
             
             {/* SECTION 1 */}
             <div className="space-y-4">
-              <div className="border-b border-[#D9E0E7] pb-2">
+              <div className="border-b border-[#E5DFC5] pb-2">
                 <h2 className="text-sm font-extrabold text-[#17202A] uppercase tracking-wider">
                   Section 1: Problem Information
                 </h2>
@@ -240,7 +240,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                   required
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full px-3 py-2 rounded-md border border-[#D9E0E7] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] outline-none"
+                  className="w-full px-3 py-2 rounded-md border border-[#E5DFC5] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] outline-none"
                 />
               </div>
 
@@ -252,7 +252,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                   <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full px-3 py-2 rounded-md border border-[#D9E0E7] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] bg-white outline-none"
+                    className="w-full px-3 py-2 rounded-md border border-[#E5DFC5] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] bg-white outline-none"
                   >
                     <option value="Water & Sanitation">Water & Sanitation</option>
                     <option value="Agriculture & Rural Tech">Agriculture & Rural Tech</option>
@@ -270,7 +270,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                   <select
                     value={formData.urgency}
                     onChange={(e) => setFormData({ ...formData, urgency: e.target.value })}
-                    className="w-full px-3 py-2 rounded-md border border-[#D9E0E7] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] bg-white outline-none"
+                    className="w-full px-3 py-2 rounded-md border border-[#E5DFC5] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] bg-white outline-none"
                   >
                     <option value="Critical">Critical (Immediate Hazard)</option>
                     <option value="High">High (Severe Local Impact)</option>
@@ -283,7 +283,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
 
             {/* SECTION 2 */}
             <div className="space-y-4">
-              <div className="border-b border-[#D9E0E7] pb-2">
+              <div className="border-b border-[#E5DFC5] pb-2">
                 <h2 className="text-sm font-extrabold text-[#17202A] uppercase tracking-wider">
                   Section 2: Location
                 </h2>
@@ -299,7 +299,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                     required
                     value={formData.district}
                     onChange={(e) => setFormData({ ...formData, district: e.target.value })}
-                    className="w-full px-3 py-2 rounded-md border border-[#D9E0E7] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] outline-none"
+                    className="w-full px-3 py-2 rounded-md border border-[#E5DFC5] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] outline-none"
                   />
                 </div>
 
@@ -312,7 +312,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                     required
                     value={formData.pincode}
                     onChange={(e) => setFormData({ ...formData, pincode: e.target.value })}
-                    className="w-full px-3 py-2 rounded-md border border-[#D9E0E7] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] outline-none"
+                    className="w-full px-3 py-2 rounded-md border border-[#E5DFC5] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] outline-none"
                   />
                 </div>
               </div>
@@ -325,14 +325,14 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                   type="text"
                   value={formData.locationDetails || ''}
                   onChange={(e) => setFormData({ ...formData, locationDetails: e.target.value })}
-                  className="w-full px-3 py-2 rounded-md border border-[#D9E0E7] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] outline-none"
+                  className="w-full px-3 py-2 rounded-md border border-[#E5DFC5] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] outline-none"
                 />
               </div>
             </div>
 
             {/* SECTION 3 */}
             <div className="space-y-4">
-              <div className="border-b border-[#D9E0E7] pb-2">
+              <div className="border-b border-[#E5DFC5] pb-2">
                 <h2 className="text-sm font-extrabold text-[#17202A] uppercase tracking-wider">
                   Section 3: Problem Description
                 </h2>
@@ -347,7 +347,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                   required
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full px-3 py-2 rounded-md border border-[#D9E0E7] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] outline-none leading-relaxed"
+                  className="w-full px-3 py-2 rounded-md border border-[#E5DFC5] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] outline-none leading-relaxed"
                 />
               </div>
 
@@ -359,33 +359,33 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                   type="text"
                   value={formData.impactScope}
                   onChange={(e) => setFormData({ ...formData, impactScope: e.target.value })}
-                  className="w-full px-3 py-2 rounded-md border border-[#D9E0E7] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] outline-none"
+                  className="w-full px-3 py-2 rounded-md border border-[#E5DFC5] focus:border-[#164A7B] focus:ring-1 focus:ring-[#164A7B] text-sm text-[#17202A] outline-none"
                 />
               </div>
             </div>
 
             {/* SECTION 4 */}
             <div className="space-y-4">
-              <div className="border-b border-[#D9E0E7] pb-2">
+              <div className="border-b border-[#E5DFC5] pb-2">
                 <h2 className="text-sm font-extrabold text-[#17202A] uppercase tracking-wider">
                   Section 4: Evidence & Attachments
                 </h2>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="p-3 rounded-md border border-dashed border-[#D9E0E7] bg-[#F5F7FA] text-center space-y-1">
+                <div className="p-3 rounded-md border border-dashed border-[#E5DFC5] bg-[#FAF7F2] text-center space-y-1">
                   <ImageIcon className="w-4 h-4 text-[#5B6875] mx-auto" />
                   <span className="text-xs font-bold text-[#17202A] block">Photos</span>
                   <span className="text-[10px] text-[#5B6875] block">JPG, PNG</span>
                 </div>
 
-                <div className="p-3 rounded-md border border-dashed border-[#D9E0E7] bg-[#F5F7FA] text-center space-y-1">
+                <div className="p-3 rounded-md border border-dashed border-[#E5DFC5] bg-[#FAF7F2] text-center space-y-1">
                   <Video className="w-4 h-4 text-[#5B6875] mx-auto" />
                   <span className="text-xs font-bold text-[#17202A] block">Videos</span>
                   <span className="text-[10px] text-[#5B6875] block">MP4</span>
                 </div>
 
-                <div className="p-3 rounded-md border border-dashed border-[#D9E0E7] bg-[#F5F7FA] text-center space-y-1">
+                <div className="p-3 rounded-md border border-dashed border-[#E5DFC5] bg-[#FAF7F2] text-center space-y-1">
                   <FileText className="w-4 h-4 text-[#5B6875] mx-auto" />
                   <span className="text-xs font-bold text-[#17202A] block">Documents</span>
                   <span className="text-[10px] text-[#5B6875] block">PDF</span>
@@ -396,7 +396,7 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
                 <div className="space-y-1 pt-1">
                   <span className="text-[11px] font-bold text-[#5B6875] uppercase">Attached Files:</span>
                   {uploadedFiles.map((file, i) => (
-                    <div key={i} className="flex items-center justify-between px-3 py-1 rounded border border-[#D9E0E7] bg-[#F5F7FA] text-xs">
+                    <div key={i} className="flex items-center justify-between px-3 py-1 rounded border border-[#E5DFC5] bg-[#FAF7F2] text-xs">
                       <div className="flex items-center space-x-2">
                         <FileText className="w-3.5 h-3.5 text-[#164A7B]" />
                         <span className="font-semibold text-[#17202A]">{file.name}</span>
@@ -409,8 +409,8 @@ export default function ReportProblem({ setActivePage, setProblemData }) {
             </div>
 
             {/* SUBMIT AREA */}
-            <div className="pt-4 border-t border-[#D9E0E7] space-y-3">
-              <p className="text-xs text-[#5B6875] font-normal leading-normal bg-[#F5F7FA] p-3 rounded border border-[#D9E0E7]">
+            <div className="pt-4 border-t border-[#E5DFC5] space-y-3">
+              <p className="text-xs text-[#5B6875] font-normal leading-normal bg-[#FAF7F2] p-3 rounded border border-[#E5DFC5]">
                 <strong>Notice:</strong> After submission, the platform will analyze the problem for category, priority and similar reports.
               </p>
 

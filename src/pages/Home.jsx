@@ -12,9 +12,7 @@ import {
   TrendingUp, 
   ShieldCheck, 
   CheckCircle2, 
-  ChevronRight,
   Layers,
-  Zap,
   Lightbulb
 } from 'lucide-react';
 
@@ -132,7 +130,7 @@ export default function Home({ setActivePage }) {
   ];
 
   return (
-    <div className="bg-[#F5F7FA] min-h-screen text-[#17202A]">
+    <div className="bg-[#FAF7F2] min-h-screen text-[#17202A]">
       
       {/* HERO SECTION */}
       <section className="bg-[#0B2F50] text-white pt-10 pb-16 border-b border-[#164A7B]">
@@ -200,7 +198,7 @@ export default function Home({ setActivePage }) {
       </section>
 
       {/* 6-STEP VISUAL WORKFLOW SECTION */}
-      <section className="py-12 bg-white border-b border-[#D9E0E7]">
+      <section className="py-12 bg-white border-b border-[#E5DFC5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="mb-8">
@@ -221,7 +219,7 @@ export default function Home({ setActivePage }) {
               return (
                 <div 
                   key={step.num}
-                  className="bg-[#F5F7FA] border border-[#D9E0E7] rounded-md p-4 flex flex-col justify-between"
+                  className="bg-[#FAF7F2] border border-[#E5DFC5] rounded-md p-4 flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
@@ -249,7 +247,7 @@ export default function Home({ setActivePage }) {
       </section>
 
       {/* STAKEHOLDER SECTION */}
-      <section className="py-12 bg-[#F5F7FA] border-b border-[#D9E0E7]">
+      <section className="py-12 bg-[#FAF7F2] border-b border-[#E5DFC5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="mb-8">
@@ -270,14 +268,14 @@ export default function Home({ setActivePage }) {
               return (
                 <div 
                   key={item.title}
-                  className="bg-white rounded-md p-5 border border-[#D9E0E7] shadow-xs flex flex-col justify-between"
+                  className="bg-white rounded-md p-5 border border-[#E5DFC5] shadow-xs flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
                       <div className="w-9 h-9 rounded bg-[#164A7B] text-white flex items-center justify-center">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#F5F7FA] text-[#17202A] border border-[#D9E0E7]">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#FAF7F2] text-[#17202A] border border-[#E5DFC5]">
                         {item.badge}
                       </span>
                     </div>
@@ -293,7 +291,7 @@ export default function Home({ setActivePage }) {
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-[#D9E0E7] space-y-1.5">
+                  <div className="pt-3 border-t border-[#E5DFC5] space-y-1.5">
                     {item.highlights.map((h, i) => (
                       <div key={i} className="flex items-center text-xs text-[#17202A]">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#16865B] mr-1.5 shrink-0" />
@@ -310,7 +308,7 @@ export default function Home({ setActivePage }) {
       </section>
 
       {/* PLATFORM CAPABILITIES SECTION */}
-      <section className="py-12 bg-white border-b border-[#D9E0E7]">
+      <section className="py-12 bg-white border-b border-[#E5DFC5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="mb-8">
@@ -331,13 +329,13 @@ export default function Home({ setActivePage }) {
               return (
                 <div 
                   key={cap.title}
-                  className="bg-[#F5F7FA] border border-[#D9E0E7] rounded-md p-5 flex items-start space-x-3.5"
+                  className="bg-[#FAF7F2] border border-[#E5DFC5] rounded-md p-5 flex items-start space-x-3.5"
                 >
                   <div className="w-10 h-10 rounded bg-[#164A7B] text-white flex items-center justify-center shrink-0">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div className="space-y-1">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-white text-[#164A7B] border border-[#D9E0E7] uppercase">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-white text-[#164A7B] border border-[#E5DFC5] uppercase">
                       {cap.badge}
                     </span>
                     <h3 className="font-extrabold text-[#17202A] text-base">
@@ -374,7 +372,6 @@ export default function Home({ setActivePage }) {
             >
               <FilePlus2 className="w-4 h-4" />
               <span>Start Interactive Demo</span>
-              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>

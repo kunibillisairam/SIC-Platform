@@ -3,21 +3,20 @@
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #F5F7FA;
+    background-color: #FAF7F2;
     color: #17202A;
   }
 }
 
-/* Custom exact hex color utilities according to approved SIH26043 design system */
 :root {
   --color-sih-primary: #164A7B;
   --color-sih-dark: #0B2F50;
   --color-sih-success: #16865B;
   --color-sih-warning: #C47A00;
   --color-sih-danger: #C0392B;
-  --color-sih-bg: #F5F7FA;
+  --color-sih-bg: #FAF7F2; /* Light Biscuit Background */
   --color-sih-card: #FFFFFF;
-  --color-sih-border: #D9E0E7;
+  --color-sih-border: #E5DFC5; /* Soft Biscuit Border */
   --color-sih-text: #17202A;
   --color-sih-muted: #5B6875;
 }
