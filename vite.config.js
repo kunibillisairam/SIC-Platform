@@ -9,8 +9,11 @@ export default defineConfig({
     tailwindcss(),
   ],
   server: {
+    port: 3000,
+    strictPort: true,
+    host: '127.0.0.1',
     hmr: {
-      overlay: false, // Disables error overlay popups for non-existent HTML path requests
+      overlay: false,
     },
   },
 })
